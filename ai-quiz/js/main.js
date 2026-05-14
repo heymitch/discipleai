@@ -2,12 +2,15 @@ import { scoreQuiz } from './scoring.js';
 import { assembleResultCopy, loadResultContent } from './content-loader.js';
 import { submitQuiz, saveContact, logEvent, getSessionId } from './submit.js';
 
+const LETTERS = ['A', 'B', 'C', 'D', 'E'];
+
 const state = {
   questions: [],
   answers: {},
   currentIndex: 0,
   sessionId: null,
   submissionId: null,
+  schedulingUrl: null,
   result: null,
 };
 
@@ -31,40 +34,6 @@ function setView(name) {
   }
 }
 
-function renderQuestion() {
-  const q = state.questions[state.currentIndex];
-  const root = document.getElementById('question');
-  const selected = state.answers[q.id];
-  root.innerHTML = `
-    <h2>${escapeHTML(q.prompt)}</h2>
-    <ul class="options">
-      ${q.options.map(opt => `
-        <li>
-          <button class="option-btn" data-key="${opt.key}" aria-pressed="${selected === opt.key}">
-            ${escapeHTML(opt.text)}
-          </button>
-        </li>
-      `).join('')}
-    </ul>
-  `;
-  for (const btn of root.querySelectorAll('.option-btn')) {
-    btn.addEventListener('click', () => {
-      state.answers[q.id] = btn.dataset.key;
-      renderQuestion();
-      updateNav();
-    });
-  }
-  document.getElementById('progress').textContent = `${state.currentIndex + 1} / ${state.questions.length}`;
-}
-
-function updateNav() {
-  const q = state.questions[state.currentIndex];
-  document.getElementById('back-btn').disabled = state.currentIndex === 0;
-  document.getElementById('next-btn').disabled = !state.answers[q.id];
-  document.getElementById('next-btn').textContent =
-    state.currentIndex === state.questions.length - 1 ? 'See my result' : 'Next';
-}
-
 function escapeHTML(s) {
   return s.replace(/[&<>"']/g, c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
 }
@@ -77,6 +46,66 @@ function dimensionLabel(key) {
     cultural_discernment: 'Cultural Discernment',
     discipleship_formation: 'Discipleship Formation',
   }[key] || key;
+}
+
+function pad2(n) { return String(n).padStart(2, '0'); }
+
+function renderProgressMarks() {
+  const root = document.getElementById('progress-marks');
+  if (!root) return;
+  root.innerHTML = state.questions.map((_, i) => {
+    let cls = 'mark';
+    if (i < state.currentIndex) cls += ' done';
+    else if (i === state.currentIndex) cls += ' current';
+    return `<span class="${cls}"></span>`;
+  }).join('');
+}
+
+function renderQuestion() {
+  const q = state.questions[state.currentIndex];
+  const selected = state.answers[q.id];
+
+  // Re-create the .question element so the CSS animation runs fresh.
+  const old = document.getElementById('question');
+  const parent = old.parentElement;
+  const fresh = document.createElement('div');
+  fresh.id = 'question';
+  fresh.className = 'question';
+  fresh.innerHTML = `
+    <p class="prompt">${escapeHTML(q.prompt)}</p>
+    <ul class="options">
+      ${q.options.map((opt, i) => `
+        <li>
+          <button class="option-btn" data-key="${opt.key}" aria-pressed="${selected === opt.key}">
+            <span class="marker">${LETTERS[i]}</span>
+            <span class="text">${escapeHTML(opt.text)}</span>
+            <span class="dot" aria-hidden="true"></span>
+          </button>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+  parent.replaceChild(fresh, old);
+
+  for (const btn of fresh.querySelectorAll('.option-btn')) {
+    btn.addEventListener('click', () => {
+      state.answers[q.id] = btn.dataset.key;
+      renderQuestion();
+      updateNav();
+    });
+  }
+
+  document.getElementById('progress-num').textContent =
+    `Question ${pad2(state.currentIndex + 1)} · of ${state.questions.length}`;
+  renderProgressMarks();
+}
+
+function updateNav() {
+  const q = state.questions[state.currentIndex];
+  document.getElementById('back-btn').disabled = state.currentIndex === 0;
+  document.getElementById('next-btn').disabled = !state.answers[q.id];
+  document.getElementById('next-btn').textContent =
+    state.currentIndex === state.questions.length - 1 ? 'See my result →' : 'Next →';
 }
 
 async function init() {
@@ -123,7 +152,6 @@ async function finishQuiz() {
 
   logEvent(state.sessionId, 'completed', { archetype: result.archetype, grade: result.grade });
 
-  // Fire submission to backend. Don't block the result render on it.
   try {
     const { id, schedulingUrl } = await submitQuiz({
       sessionId: state.sessionId,
@@ -137,7 +165,10 @@ async function finishQuiz() {
     console.error('Quiz submission failed:', err);
     const block = document.getElementById('email-capture');
     if (block) {
-      block.innerHTML = '<p class="lede">(We couldn\'t save your result, but you can still see it above. Feel free to share a screenshot.)</p>';
+      block.innerHTML = `
+        <h3>Your result is yours.</h3>
+        <p>We couldn't save your submission, but the result above stands. Feel free to screenshot.</p>
+      `;
     }
   }
 }
@@ -151,15 +182,20 @@ function renderResultHTML(result, copy) {
   `).join('');
 
   return `
-    <p class="eyebrow">Your result</p>
-    <h1 class="result-name">${escapeHTML(copy.label)}</h1>
-    <p class="result-grade">Grade <strong>${escapeHTML(result.grade)}</strong></p>
+    <p class="chapter-mark">Your result</p>
+    <h1 class="result-archetype">${escapeHTML(copy.label)}</h1>
+
+    <div class="result-grade-row">
+      <span class="grade-label">Grade</span>
+      <span class="grade-letter">${escapeHTML(result.grade)}</span>
+    </div>
+
     <p class="result-tagline">${escapeHTML(copy.tagline)}</p>
 
-    <section class="narrative">
+    <div class="narrative">
       <p>${escapeHTML(copy.shell)}</p>
       <p>${escapeHTML(copy.gradeDelta)}</p>
-    </section>
+    </div>
 
     ${copy.driftCaveat ? `
       <aside class="drift-caveat">
@@ -175,9 +211,11 @@ function renderResultHTML(result, copy) {
 
     <section class="whats-next">
       <h3>What's next</h3>
-      <p><strong>Practice:</strong> ${escapeHTML(copy.whatsNext.practice)}</p>
-      <p><strong>Read:</strong> ${escapeHTML(copy.whatsNext.reading)}</p>
-      <p><strong>Tool or absence:</strong> ${escapeHTML(copy.whatsNext.tool)}</p>
+      <dl>
+        <div class="next-item"><dt>Practice</dt><dd>${escapeHTML(copy.whatsNext.practice)}</dd></div>
+        <div class="next-item"><dt>Read</dt><dd>${escapeHTML(copy.whatsNext.reading)}</dd></div>
+        <div class="next-item"><dt>Tool or absence</dt><dd>${escapeHTML(copy.whatsNext.tool)}</dd></div>
+      </dl>
     </section>
 
     <section id="email-capture" class="email-capture">
@@ -189,8 +227,8 @@ function renderResultHTML(result, copy) {
       </div>
 
       <form id="capture-form">
-        <label>Email <input name="email" type="email" required autocomplete="email"></label>
-        <label>Name <input name="name" type="text" required autocomplete="name"></label>
+        <label>Email <input name="email" type="email" required autocomplete="email" placeholder="you@example.com"></label>
+        <label>Name <input name="name" type="text" required autocomplete="name" placeholder="Your name"></label>
         <label>Role
           <select name="role">
             <option value="">(optional)</option>
@@ -201,15 +239,15 @@ function renderResultHTML(result, copy) {
             <option value="other">Other</option>
           </select>
         </label>
-        <label class="inline"><input type="checkbox" name="is_arizona"> <span>I'm in Arizona</span></label>
+        <label class="inline"><input type="checkbox" name="is_arizona"> <span>I'm in Arizona (coffee's on Mitch)</span></label>
 
         <fieldset class="opt-ins">
-          <label class="inline"><input type="checkbox" name="interview_opt_in"> <span><strong>Yes, willing to talk further</strong> (15&ndash;30 min interview)</span></label>
+          <label class="inline"><input type="checkbox" name="interview_opt_in"> <span><strong>Yes, willing to talk further</strong> &mdash; a 15&ndash;30 minute interview</span></label>
           <label class="inline"><input type="checkbox" name="group_version_opt_in"> <span><strong>Notify me when the group/congregation version is ready</strong></span></label>
-          <label class="inline"><input type="checkbox" name="kit_opt_in"> <span>Add me to the Kit list (personal outreach + per-archetype emails; separate from the Substack newsletter)</span></label>
+          <label class="inline"><input type="checkbox" name="kit_opt_in"> <span>Add me to the Kit list (personal outreach + per-archetype emails)</span></label>
         </fieldset>
 
-        <button class="btn-p" type="submit" id="capture-submit-btn">Submit</button>
+        <button class="begin-cta" type="submit" id="capture-submit-btn">Submit</button>
         <p id="capture-error" class="capture-error" hidden></p>
       </form>
       <div id="capture-success" hidden></div>
@@ -253,7 +291,7 @@ function wireEmailCapture() {
       showCaptureSuccess(result, payload);
     } catch (err) {
       console.error('save-contact failed:', err);
-      errorBox.textContent = 'Something went wrong — please try again, or email mitch directly.';
+      errorBox.textContent = 'Something went wrong. Try again, or email mitch directly.';
       errorBox.hidden = false;
       btn.disabled = false;
       btn.textContent = 'Submit';
@@ -268,9 +306,9 @@ function showCaptureSuccess(result, payload) {
   const schedulingUrl = result.schedulingUrl || state.schedulingUrl;
   if (payload.interviewOptIn && schedulingUrl) {
     root.innerHTML = `
-      <h3>Thanks — let's get on the calendar.</h3>
-      <p>Pick a time that works:</p>
-      <p><a class="btn-p" href="${schedulingUrl}" target="_blank" rel="noopener">Book a 15&ndash;30 min slot</a></p>
+      <h3>Thanks &mdash; let's get on the calendar.</h3>
+      <p>Pick a time that works for you:</p>
+      <p><a class="begin-cta" href="${schedulingUrl}" target="_blank" rel="noopener">Book a 15&ndash;30 min slot</a></p>
     `;
   } else {
     root.innerHTML = `<h3>Thanks. I'll be in touch.</h3>`;
