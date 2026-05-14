@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" width="240" height="240">
+  
+  <defs>
+    <pattern id="glass" x="0" y="0" width="240" height="240" patternUnits="userSpaceOnUse">
+      
+      <path d="M0 0 L80 10 L60 90 L0 70 Z" fill="#EFE6D4"></path>
+      <path d="M80 10 L170 0 L180 80 L60 90 Z" fill="#E8DFD3"></path>
+      <path d="M170 0 L240 20 L240 90 L180 80 Z" fill="#F4ECDD"></path>
+      <path d="M0 70 L60 90 L40 170 L0 160 Z" fill="#F4ECDD"></path>
+      <path d="M60 90 L180 80 L170 160 L40 170 Z" fill="#E8DFD3"></path>
+      <path d="M180 80 L240 90 L240 170 L170 160 Z" fill="#EFE6D4"></path>
+      <path d="M0 160 L40 170 L20 240 L0 240 Z" fill="#E8DFD3"></path>
+      <path d="M40 170 L170 160 L180 240 L20 240 Z" fill="#F4ECDD"></path>
+      <path d="M170 160 L240 170 L240 240 L180 240 Z" fill="#E8DFD3"></path>
+      
+      <g stroke="#1A1613" stroke-width="1" fill="none" opacity="0.85">
+        <path d="M0 0 L80 10 L170 0 L240 20"></path>
+        <path d="M0 70 L60 90 L180 80 L240 90"></path>
+        <path d="M0 160 L40 170 L170 160 L240 170"></path>
+        <path d="M80 10 L60 90 L40 170 L20 240"></path>
+        <path d="M170 0 L180 80 L170 160 L180 240"></path>
+      </g>
+    </pattern>
+  </defs>
+  <rect width="240" height="240" fill="url(#glass)"></rect>
+</svg>

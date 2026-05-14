@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  
+  <defs>
+    <clipPath id="markClip">
+      <rect x="4" y="4" width="56" height="56" rx="4"></rect>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#markClip)">
+    
+    <rect x="4" y="4" width="56" height="56" rx="4" fill="#F4ECDD"></rect>
+    
+    
+    <path d="M14 10 L14 54 L22 54 L22 10 Z" fill="#6E2019"></path>
+    
+    <path d="M22 10 L42 10 L50 18 L22 18 Z" fill="#A6572C"></path>
+    
+    <path d="M22 18 L50 18 L50 32 L22 32 Z" fill="#EFE6D4"></path>
+    
+    <path d="M22 32 L50 32 L50 46 L22 46 Z" fill="#3D4A3A"></path>
+    
+    <path d="M22 46 L50 46 L42 54 L22 54 Z" fill="#B08A3E"></path>
+    
+    <path d="M34 18 L34 46" stroke="#1A1613" stroke-width="1.2" fill="none"></path>
+    
+    <path d="M14 10 L14 54 M22 10 L22 54 M50 18 L50 46 M22 18 L50 18 M22 32 L50 32 M22 46 L50 46 M22 10 L50 18 M22 54 L50 46" stroke="#1A1613" stroke-width="1.4" fill="none" stroke-linejoin="miter"></path>
+  </g>
+  
+  <rect x="4" y="4" width="56" height="56" rx="4" fill="none" stroke="#1A1613" stroke-width="1.5"></rect>
+</svg>

@@ -1,0 +1,351 @@
+/* =========================================================
+   Disciple AI — Core Tokens
+   Scholarly warm: oxblood, cream, tobacco, library leather.
+   Mono (IBM Plex Mono) + Serif (Crimson Pro) + UI sans (Inter Tight)
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Mono:wght@300;400;500;600&family=Inter+Tight:wght@400;500;600;700&display=swap');
+
+:root {
+  /* ---------- Color — Neutrals (warm) ---------- */
+  --ink:        #1A1613;   /* near-black, warm brown-black — primary text */
+  --ink-2:      #2B241E;   /* secondary ink */
+  --ink-3:      #5A4E44;   /* tertiary / metadata */
+  --ink-4:      #8A7E72;   /* muted / placeholder */
+
+  --parchment:  #F4ECDD;   /* primary warm cream canvas */
+  --parchment-2:#E8DFD3;   /* card surface, subtle panel */
+  --parchment-3:#D9CFC0;   /* hairlines, dividers */
+  --parchment-4:#C8BCA9;   /* stronger dividers, disabled */
+
+  --bone:       #FBF7EF;   /* highest surface, modal */
+  --vellum:     #EFE6D4;   /* alt surface tone */
+
+  /* ---------- Color — Brand accents ---------- */
+  --oxblood:    #6E2019;   /* primary accent — deep, reverent */
+  --oxblood-2:  #8A2A20;   /* hover */
+  --oxblood-3:  #4A1510;   /* press / deep emphasis */
+
+  --tobacco:    #A6572C;   /* secondary accent — warm, earthy */
+  --tobacco-2:  #C2703F;   /* hover */
+  --tobacco-3:  #7E3E1D;   /* deep */
+
+  --forest:     #3D4A3A;   /* tertiary — calm, grounding */
+  --forest-2:   #4F5D4B;
+  --forest-3:   #2A342A;
+
+  --gilt:       #B08A3E;   /* used sparingly — rule marks, verse refs */
+  --gilt-2:     #C9A24B;
+
+  /* ---------- Semantic ---------- */
+  --bg:         var(--parchment);
+  --bg-elev-1:  var(--parchment-2);
+  --bg-elev-2:  var(--bone);
+  --bg-inverse: var(--ink);
+
+  --fg:         var(--ink);
+  --fg-2:       var(--ink-2);
+  --fg-muted:   var(--ink-3);
+  --fg-subtle:  var(--ink-4);
+  --fg-inverse: var(--parchment);
+
+  --accent:     var(--oxblood);
+  --accent-fg:  var(--bone);
+  --accent-2:   var(--tobacco);
+
+  --rule:       var(--parchment-3);
+  --rule-strong:var(--parchment-4);
+
+  --success:    #4A6B3E;
+  --warning:    #A6572C;   /* tobacco doubles as warning */
+  --danger:     var(--oxblood);
+
+  /* ---------- Type families ---------- */
+  --font-serif:  'Crimson Pro', 'Iowan Old Style', Georgia, serif;
+  --font-mono:   'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --font-sans:   'Inter Tight', 'Inter', system-ui, -apple-system, sans-serif;
+
+  --font-display: var(--font-serif);
+  --font-body:    var(--font-serif);
+  --font-ui:      var(--font-sans);
+  --font-code:    var(--font-mono);
+
+  /* ---------- Type scale (fluid minor third) ---------- */
+  --fs-caption: 0.75rem;  /* 12 */
+  --fs-micro:   0.8125rem;/* 13 */
+  --fs-body:    1rem;     /* 16 */
+  --fs-lede:    1.125rem; /* 18 */
+  --fs-h6:      1.25rem;  /* 20 */
+  --fs-h5:      1.5rem;   /* 24 */
+  --fs-h4:      1.875rem; /* 30 */
+  --fs-h3:      2.25rem;  /* 36 */
+  --fs-h2:      3rem;     /* 48 */
+  --fs-h1:      4rem;     /* 64 */
+  --fs-display: 5.5rem;   /* 88 */
+
+  --lh-tight:  1.05;
+  --lh-snug:   1.2;
+  --lh-normal: 1.45;
+  --lh-relaxed:1.6;
+  --lh-loose:  1.75;
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:   0em;
+  --tracking-wide:     0.04em;
+  --tracking-mono:     0.02em;
+  --tracking-caps:     0.14em;   /* for eyebrow / labels */
+
+  /* ---------- Spacing — 4px base ---------- */
+  --s-0:  0;
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-8:  32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+  --s-20: 80px;
+  --s-24: 96px;
+  --s-32: 128px;
+
+  /* ---------- Radii — restrained ---------- */
+  --r-0:  0;
+  --r-1:  2px;
+  --r-2:  4px;
+  --r-3:  8px;
+  --r-4:  12px;
+  --r-pill: 999px;
+
+  /* ---------- Elevation — soft, warm ---------- */
+  --shadow-1: 0 1px 0 rgba(26, 22, 19, 0.04), 0 1px 2px rgba(26, 22, 19, 0.06);
+  --shadow-2: 0 2px 4px rgba(26, 22, 19, 0.06), 0 8px 16px -4px rgba(26, 22, 19, 0.08);
+  --shadow-3: 0 8px 24px -6px rgba(26, 22, 19, 0.12), 0 24px 48px -12px rgba(26, 22, 19, 0.14);
+  --shadow-inset: inset 0 1px 0 rgba(255, 248, 232, 0.5), inset 0 -1px 0 rgba(26, 22, 19, 0.05);
+
+  /* ---------- Motion ---------- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in:  cubic-bezier(0.4, 0, 0.8, 0.2);
+  --ease-inout: cubic-bezier(0.5, 0, 0.2, 1);
+  --dur-1: 120ms;
+  --dur-2: 200ms;
+  --dur-3: 320ms;
+  --dur-4: 500ms;
+
+  /* ---------- Layout ---------- */
+  --container: 1200px;
+  --measure: 68ch;          /* reading width */
+  --gutter: clamp(16px, 4vw, 48px);
+}
+
+/* =========================================================
+   Base reset + element styles
+   ========================================================= */
+html { box-sizing: border-box; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+*, *::before, *::after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-relaxed);
+  font-feature-settings: 'kern', 'liga', 'onum';
+}
+
+/* Display — reserved, for hero moments */
+.display, h1.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(3rem, 7vw, var(--fs-display));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+}
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5vw, var(--fs-h1));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--s-6);
+}
+
+h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(2rem, 4vw, var(--fs-h2));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  margin: 0 0 var(--s-5);
+}
+
+h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  margin: 0 0 var(--s-4);
+}
+
+h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h4);
+  line-height: var(--lh-snug);
+  margin: 0 0 var(--s-3);
+}
+
+h5 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--fs-h5);
+  line-height: var(--lh-snug);
+  margin: 0 0 var(--s-3);
+}
+
+h6 {
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: var(--fs-h6);
+  line-height: var(--lh-snug);
+  margin: 0 0 var(--s-2);
+}
+
+/* Eyebrow — mono caps for labels, section markers */
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* Lede — first-paragraph emphasis */
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-lede);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+}
+
+p {
+  margin: 0 0 var(--s-4);
+  max-width: var(--measure);
+}
+
+/* Verse reference — mono + gilt, inline */
+.verse-ref {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  color: var(--gilt);
+  letter-spacing: var(--tracking-mono);
+  font-weight: 500;
+}
+
+/* Scripture block */
+.scripture {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: var(--fs-lede);
+  line-height: var(--lh-relaxed);
+  color: var(--ink-2);
+  border-left: 2px solid var(--oxblood);
+  padding: var(--s-1) 0 var(--s-1) var(--s-5);
+  margin: var(--s-6) 0;
+}
+
+/* Code + prompt */
+code, kbd, samp {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--parchment-2);
+  padding: 0.1em 0.35em;
+  border-radius: var(--r-1);
+  border: 1px solid var(--parchment-3);
+}
+
+pre {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  line-height: var(--lh-normal);
+  background: var(--ink);
+  color: var(--parchment);
+  padding: var(--s-5);
+  border-radius: var(--r-2);
+  overflow-x: auto;
+}
+
+pre code { background: transparent; border: none; padding: 0; color: inherit; }
+
+/* Prompt marker — recurring motif */
+.prompt::before {
+  content: '> ';
+  color: var(--oxblood);
+  font-family: var(--font-mono);
+  font-weight: 500;
+}
+
+/* Section number — editorial */
+.section-num {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--gilt);
+  letter-spacing: var(--tracking-mono);
+}
+
+/* Links */
+a {
+  color: var(--oxblood);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  transition: color var(--dur-1) var(--ease-out);
+}
+a:hover { color: var(--oxblood-2); }
+a:active { color: var(--oxblood-3); }
+
+hr {
+  border: 0;
+  height: 1px;
+  background: var(--rule);
+  margin: var(--s-8) 0;
+}
+
+/* Gilt rule — the editorial hairline */
+hr.gilt {
+  background: var(--gilt);
+  height: 1px;
+  opacity: 0.6;
+}
+
+/* Caption */
+.caption, figcaption, small {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--fg-muted);
+  letter-spacing: var(--tracking-mono);
+  line-height: var(--lh-normal);
+}
+
+/* Drop cap — illuminated-manuscript nod */
+.dropcap::first-letter {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 4.2em;
+  float: left;
+  line-height: 0.85;
+  padding: 0.08em 0.12em 0 0;
+  color: var(--oxblood);
+}
+
+/* Selection */
+::selection {
+  background: var(--oxblood);
+  color: var(--bone);
+}

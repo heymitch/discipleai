@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 88" width="520" height="88">
+  
+  <g transform="translate(0,12)">
+    <rect x="0" y="0" width="64" height="64" rx="4" fill="#F4ECDD"></rect>
+    <path d="M10 6 L10 58 L18 58 L18 6 Z" fill="#6E2019"></path>
+    <path d="M18 6 L38 6 L46 14 L18 14 Z" fill="#A6572C"></path>
+    <path d="M18 14 L46 14 L46 32 L18 32 Z" fill="#EFE6D4"></path>
+    <path d="M18 32 L46 32 L46 50 L18 50 Z" fill="#3D4A3A"></path>
+    <path d="M18 50 L46 50 L38 58 L18 58 Z" fill="#B08A3E"></path>
+    <path d="M30 14 L30 50" stroke="#1A1613" stroke-width="1" fill="none"></path>
+    <path d="M10 6 L10 58 M18 6 L18 58 M46 14 L46 50 M18 14 L46 14 M18 32 L46 32 M18 50 L46 50 M18 6 L46 14 M18 58 L46 50" stroke="#1A1613" stroke-width="1.2" fill="none" stroke-linejoin="miter"></path>
+    <rect x="0" y="0" width="64" height="64" rx="4" fill="none" stroke="#1A1613" stroke-width="1.4"></rect>
+  </g>
+  <text x="88" y="52" class="serif">Disciple</text>
+  <text x="258" y="52" class="mono">AI</text>
+  <line x1="88" y1="62" x2="296" y2="62" stroke="#B08A3E" stroke-width="1" opacity="0.7"></line>
+  <text x="88" y="76" class="tag">Faith meets future</text>
+</svg>
