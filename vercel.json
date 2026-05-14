@@ -1,5 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/ai-quiz", "destination": "/ai-quiz/index.html" }
   ],
@@ -8,6 +10,25 @@
       "source": "/ai-quiz/(.*)",
       "headers": [
         { "key": "Cache-Control", "value": "public, max-age=300, must-revalidate" }
+      ]
+    },
+    {
+      "source": "/dashboard",
+      "headers": [
+        { "key": "x-robots-tag", "value": "noindex, nofollow" },
+        { "key": "cache-control", "value": "private, no-store, max-age=0" }
+      ]
+    },
+    {
+      "source": "/login",
+      "headers": [
+        { "key": "x-robots-tag", "value": "noindex, nofollow" }
+      ]
+    },
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        { "key": "cache-control", "value": "no-store" }
       ]
     }
   ]
