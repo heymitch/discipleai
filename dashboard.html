@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Marketing Dashboard — Disciple AI</title>
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+:root{
+  --bk:#0A0908;
+  --bk-2:#161311;
+  --bk-3:#1F1A17;
+  --bk-4:#262120;
+  --line:rgba(244,236,221,.10);
+  --line-2:rgba(244,236,221,.18);
+  --paper:#F4ECDD;
+  --paper-dim:#D9CFC0;
+  --paper-mute:#8A7E72;
+  --ox:#A5331F;
+  --ox-deep:#6E2019;
+  --tob:#C2703F;
+  --forest:#4F5D4B;
+  --gilt:#C9A24B;
+  --success:#6F8A56;
+}
+*{box-sizing:border-box;}
+body{background:var(--bk);color:var(--paper);margin:0;font-family:var(--font-serif);min-height:100vh;}
+.wrap{max-width:1320px;margin:0 auto;padding:0 32px;}
+
+/* ── top bar ── */
+nav.top{position:sticky;top:0;z-index:20;background:rgba(10,9,8,.82);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid var(--line);}
+nav.top .inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1320px;margin:0 auto;padding:0 32px;}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.brand img{height:28px;}
+.brand .mk{font-family:var(--font-serif);font-size:21px;color:var(--paper);font-weight:500;letter-spacing:-.01em;}
+.brand .ai{font-family:var(--font-mono);font-size:12px;color:var(--ox);letter-spacing:.22em;margin-left:2px;}
+.brand .div{font-family:var(--font-mono);font-size:12px;color:var(--paper-mute);letter-spacing:.16em;margin-left:14px;padding-left:14px;border-left:1px solid var(--line-2);text-transform:uppercase;}
+nav.top .right{display:flex;align-items:center;gap:24px;}
+nav.top .stamp{font-family:var(--font-mono);font-size:11px;color:var(--paper-mute);letter-spacing:.1em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+nav.top .stamp::before{content:'';width:6px;height:6px;background:var(--success);border-radius:999px;box-shadow:0 0 8px rgba(111,138,86,.6);}
+nav.top .logout{font-family:var(--font-mono);font-size:11px;color:var(--paper-dim);letter-spacing:.14em;text-transform:uppercase;text-decoration:none;padding:6px 12px;border:1px solid var(--line-2);border-radius:2px;cursor:pointer;background:transparent;}
+nav.top .logout:hover{color:var(--paper);border-color:var(--gilt);}
+
+/* ── page header ── */
+.page-head{padding:56px 0 36px;border-bottom:1px solid var(--line);}
+.page-head .eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gilt);margin-bottom:18px;display:inline-flex;align-items:center;gap:12px;}
+.page-head .eyebrow::before{content:'§ 00';color:var(--gilt);}
+.page-head h1{font-family:var(--font-serif);font-weight:500;font-size:clamp(2.4rem,5vw,4rem);line-height:1;letter-spacing:-.03em;margin:0 0 16px;color:var(--paper);}
+.page-head h1 em{font-style:italic;color:var(--ox);font-weight:400;}
+.page-head .lede{font-family:var(--font-serif);font-size:18px;line-height:1.5;color:var(--paper-dim);max-width:680px;margin:0;}
+.page-head .meta{display:flex;gap:32px;margin-top:28px;flex-wrap:wrap;}
+.page-head .meta .item{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-mute);}
+.page-head .meta .item b{color:var(--paper-dim);font-weight:500;margin-left:6px;}
+
+/* ── section header ── */
+.section{padding:64px 0;border-bottom:1px solid var(--line);}
+.section.tight{padding:48px 0;}
+.section-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:32px;gap:24px;flex-wrap:wrap;}
+.section-head .label{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-mute);display:flex;align-items:center;gap:14px;}
+.section-head .label::before{color:var(--gilt);}
+.section-head h2{font-family:var(--font-serif);font-weight:500;font-size:32px;line-height:1.1;letter-spacing:-.02em;color:var(--paper);margin:0;}
+.section-head h2 em{font-style:italic;color:var(--ox);font-weight:400;}
+.section-head .source{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-mute);display:inline-flex;align-items:center;gap:8px;}
+.section-head .source .dot{width:6px;height:6px;border-radius:999px;background:var(--paper-mute);}
+.section-head .source.live .dot{background:var(--success);box-shadow:0 0 6px rgba(111,138,86,.6);}
+.section-head .source.pending .dot{background:var(--tob);}
+
+.s01 .label::before{content:'§ 01';}
+.s02 .label::before{content:'§ 02';}
+.s03 .label::before{content:'§ 03';}
+.s04 .label::before{content:'§ 04';}
+.s05 .label::before{content:'§ 05';}
+
+/* ── funnel ── */
+.funnel{display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--line-2);border-radius:3px;overflow:hidden;}
+.funnel .step{padding:28px 24px;border-right:1px solid var(--line);background:var(--bk-2);position:relative;transition:background .2s var(--ease-out);}
+.funnel .step:last-child{border-right:0;}
+.funnel .step:hover{background:var(--bk-3);}
+.funnel .step .sn{font-family:var(--font-mono);font-size:10px;color:var(--gilt);letter-spacing:.16em;text-transform:uppercase;margin-bottom:10px;display:block;}
+.funnel .step .lab{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:14px;display:block;}
+.funnel .step .n{font-family:var(--font-serif);font-weight:500;font-size:38px;line-height:.95;letter-spacing:-.02em;color:var(--paper);}
+.funnel .step .delta{font-family:var(--font-mono);font-size:11px;color:var(--paper-mute);margin-top:8px;letter-spacing:.04em;}
+.funnel .step .delta .pct{color:var(--gilt);font-weight:500;}
+.funnel .step .delta.fall{color:var(--paper-mute);}
+@media (max-width:1100px){.funnel{grid-template-columns:repeat(3,1fr);}.funnel .step:nth-child(3){border-right:0;}.funnel .step:nth-child(-n+3){border-bottom:1px solid var(--line);}}
+@media (max-width:640px){.funnel{grid-template-columns:repeat(2,1fr);}.funnel .step{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}.funnel .step:nth-child(2n){border-right:0;}}
+
+/* ── benchmark callouts ── */
+.bench{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px;}
+.bench .tile{background:var(--bk-2);border:1px solid var(--line);padding:20px 22px;border-radius:3px;position:relative;}
+.bench .tile::before{content:'';position:absolute;left:-1px;top:18px;bottom:18px;width:2px;background:var(--paper-mute);}
+.bench .tile.floor::before{background:var(--ox-deep);}
+.bench .tile.target::before{background:var(--tob);}
+.bench .tile.strong::before{background:var(--gilt);}
+.bench .tile.actual::before{background:var(--success);}
+.bench .tile .l{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:10px;}
+.bench .tile .v{font-family:var(--font-serif);font-weight:500;font-size:30px;line-height:1;color:var(--paper);letter-spacing:-.02em;}
+.bench .tile .v.muted{color:var(--paper-mute);}
+.bench .tile .sub{font-family:var(--font-mono);font-size:10.5px;color:var(--paper-mute);margin-top:8px;letter-spacing:.06em;}
+@media (max-width:900px){.bench{grid-template-columns:repeat(2,1fr);}}
+
+/* ── email rows ── */
+.emails{border:1px solid var(--line-2);border-radius:3px;overflow:hidden;background:var(--bk-2);}
+.emails .head, .emails .row{display:grid;grid-template-columns:50px 1.4fr 1fr 1fr 1fr 1fr 1fr 1fr;gap:0;align-items:center;}
+.emails .head{padding:14px 22px;background:var(--bk-3);border-bottom:1px solid var(--line-2);}
+.emails .head span{font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-mute);}
+.emails .row{padding:22px;border-bottom:1px solid var(--line);transition:background .15s var(--ease-out);}
+.emails .row:last-child{border-bottom:0;}
+.emails .row:hover{background:var(--bk-3);}
+.emails .row .num{font-family:var(--font-mono);font-size:11px;color:var(--gilt);letter-spacing:.1em;}
+.emails .row .subj{font-family:var(--font-serif);font-size:16px;color:var(--paper);line-height:1.3;padding-right:20px;}
+.emails .row .subj .sub{display:block;font-family:var(--font-mono);font-size:10.5px;color:var(--paper-mute);letter-spacing:.06em;margin-top:4px;text-transform:uppercase;}
+.emails .row .n{font-family:var(--font-serif);font-size:22px;color:var(--paper);font-weight:500;letter-spacing:-.01em;}
+.emails .row .n.muted{color:var(--paper-mute);font-size:18px;}
+.emails .row .n .pct{font-family:var(--font-mono);font-size:11px;color:var(--paper-mute);margin-left:4px;letter-spacing:.04em;}
+.emails .row .bar{position:relative;height:3px;background:var(--bk-4);border-radius:2px;margin-top:6px;overflow:hidden;}
+.emails .row .bar .fill{position:absolute;left:0;top:0;bottom:0;background:var(--gilt);}
+.emails .row .bar .fill.floor{background:var(--ox-deep);}
+.emails .row .bar .fill.target{background:var(--tob);}
+.emails .row .bar .fill.strong{background:var(--gilt);}
+@media (max-width:1100px){.emails .head, .emails .row{grid-template-columns:50px 1.4fr repeat(3,1fr);}.emails .col-bnc, .emails .col-unsub, .emails .col-rpl{display:none;}}
+@media (max-width:720px){.emails .head{display:none;}.emails .row{grid-template-columns:1fr 1fr;gap:8px 16px;padding:18px;}.emails .row .num{grid-column:1/-1;}.emails .row .subj{grid-column:1/-1;margin-bottom:6px;}}
+
+/* ── two-up panels ── */
+.two-up{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+@media (max-width:900px){.two-up{grid-template-columns:1fr;}}
+.panel{background:var(--bk-2);border:1px solid var(--line-2);border-radius:3px;padding:28px;position:relative;}
+.panel::before{content:'';position:absolute;left:-1px;top:24px;bottom:24px;width:2px;background:var(--ox);}
+.panel h3{font-family:var(--font-serif);font-weight:500;font-size:22px;line-height:1.2;color:var(--paper);margin:0 0 6px;letter-spacing:-.01em;}
+.panel .ref{font-family:var(--font-mono);font-size:11px;color:var(--gilt);letter-spacing:.06em;margin-bottom:24px;text-transform:uppercase;letter-spacing:.14em;}
+.panel .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px 32px;}
+.panel .grid .cell{}
+.panel .grid .cell .l{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:8px;}
+.panel .grid .cell .n{font-family:var(--font-serif);font-weight:500;font-size:32px;line-height:1;color:var(--paper);letter-spacing:-.02em;}
+.panel .grid .cell .n.muted{color:var(--paper-mute);font-size:24px;}
+.panel .grid .cell .n .pct{font-family:var(--font-mono);font-size:13px;color:var(--paper-mute);margin-left:4px;letter-spacing:.04em;}
+.panel .grid .cell .sub{font-family:var(--font-mono);font-size:10.5px;color:var(--paper-mute);margin-top:6px;letter-spacing:.06em;}
+.panel .foot{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--font-mono);font-size:11px;color:var(--paper-mute);letter-spacing:.08em;display:flex;justify-content:space-between;}
+.panel .foot a{color:var(--paper-dim);text-decoration:none;border-bottom:1px solid var(--line-2);padding-bottom:1px;}
+.panel .foot a:hover{color:var(--gilt);border-bottom-color:var(--gilt);}
+
+/* ── cold-outreach pipeline ── */
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line-2);border-radius:3px;overflow:hidden;background:var(--bk-2);}
+.pipeline .stage{padding:24px 22px;border-right:1px solid var(--line);}
+.pipeline .stage:last-child{border-right:0;}
+.pipeline .stage .l{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--paper-mute);margin-bottom:12px;}
+.pipeline .stage .n{font-family:var(--font-serif);font-weight:500;font-size:32px;line-height:1;color:var(--paper);letter-spacing:-.02em;}
+.pipeline .stage .pct{font-family:var(--font-mono);font-size:11px;color:var(--gilt);margin-top:8px;letter-spacing:.04em;}
+@media (max-width:900px){.pipeline{grid-template-columns:repeat(2,1fr);}.pipeline .stage{border-right:1px solid var(--line);border-bottom:1px solid var(--line);}.pipeline .stage:nth-child(2n){border-right:0;}.pipeline .stage:last-child{border-bottom:0;}}
+
+/* ── footer ── */
+footer{padding:48px 0 56px;text-align:center;}
+footer .scripture{font-family:var(--font-serif);font-style:italic;font-size:15px;color:var(--paper-mute);max-width:540px;margin:0 auto 12px;line-height:1.5;}
+footer .ref{font-family:var(--font-mono);font-size:11px;color:var(--gilt);letter-spacing:.16em;text-transform:uppercase;}
+
+/* ── load animation ── */
+.fade-in{opacity:0;transform:translateY(8px);animation:fadeUp .6s var(--ease-out) forwards;}
+.fade-in.d1{animation-delay:.05s;}
+.fade-in.d2{animation-delay:.12s;}
+.fade-in.d3{animation-delay:.19s;}
+.fade-in.d4{animation-delay:.26s;}
+.fade-in.d5{animation-delay:.33s;}
+.fade-in.d6{animation-delay:.40s;}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0);}}
+@media (prefers-reduced-motion: reduce){.fade-in{opacity:1;transform:none;animation:none;}}
+
+.empty{font-family:var(--font-mono);font-size:12px;color:var(--paper-mute);letter-spacing:.06em;font-style:normal;}
+.dash{color:var(--paper-mute);}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img src="assets/logo-mark.svg" alt="">
+      <span class="mk">Disciple<span class="ai">AI</span></span>
+      <span class="div">Marketing Log</span>
+    </a>
+    <div class="right">
+      <span class="stamp" id="last-updated">Updated —</span>
+      <button class="logout" type="button" id="logout">Sign out</button>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="page-head fade-in">
+    <div class="eyebrow">Private log · For Mitch only</div>
+    <h1>Quiz to <em>interview</em> nurture.</h1>
+    <p class="lede">A working observatory for the five-email sequence converting quiz opt-ins into recorded conversations. Benchmarks are warm-lead research-recruitment, not standard product nurture.</p>
+    <div class="meta">
+      <div class="item">Sequence <b>Email 1–5</b></div>
+      <div class="item">Audience <b>Quiz opt-ins</b></div>
+      <div class="item">Primary KPI <b>Interview booked + async reply</b></div>
+      <div class="item">Cadence <b>Weekly review</b></div>
+    </div>
+  </header>
+
+  <!-- §01 funnel -->
+  <section class="section s01 fade-in d1">
+    <div class="section-head">
+      <div class="label">Top-of-funnel through booking</div>
+      <h2>The <em>funnel</em>, in one breath.</h2>
+      <span class="source pending" id="src-funnel"><span class="dot"></span>ESP + Calendly · pending wiring</span>
+    </div>
+
+    <div class="funnel" id="funnel">
+      <div class="step"><span class="sn">01</span><span class="lab">Landing visits</span><div class="n" data-k="visits">—</div><div class="delta"><span class="pct" data-k="visits_delta">—</span> all-time</div></div>
+      <div class="step"><span class="sn">02</span><span class="lab">Quiz started</span><div class="n" data-k="quiz_started">—</div><div class="delta"><span class="pct" data-k="start_rate">—</span> of visits</div></div>
+      <div class="step"><span class="sn">03</span><span class="lab">Quiz completed</span><div class="n" data-k="quiz_completes">—</div><div class="delta"><span class="pct" data-k="complete_rate">—</span> of starts</div></div>
+      <div class="step"><span class="sn">04</span><span class="lab">Email opt-ins</span><div class="n" data-k="optins">—</div><div class="delta"><span class="pct" data-k="optin_rate">—</span> of completes</div></div>
+      <div class="step"><span class="sn">05</span><span class="lab">Open to meet</span><div class="n" data-k="open_to_meet">—</div><div class="delta"><span class="pct" data-k="otm_rate">—</span> of opt-ins</div></div>
+      <div class="step"><span class="sn">06</span><span class="lab">Booked + async</span><div class="n" data-k="booked">—</div><div class="delta"><span class="pct" data-k="booked_rate">—</span> end-to-end</div></div>
+    </div>
+
+    <div class="bench">
+      <div class="tile floor"><div class="l">Floor</div><div class="v">6%</div><div class="sub">Don't dip below</div></div>
+      <div class="tile target"><div class="l">Target</div><div class="v">10%</div><div class="sub">What we're aiming at</div></div>
+      <div class="tile strong"><div class="l">Strong</div><div class="v">15%+</div><div class="sub">Worth scaling outreach</div></div>
+      <div class="tile actual"><div class="l">Current</div><div class="v muted" data-k="booked_rate_v">—</div><div class="sub" data-k="bench_note">Awaiting data</div></div>
+    </div>
+  </section>
+
+  <!-- §02 email sequence -->
+  <section class="section s02 fade-in d2">
+    <div class="section-head">
+      <div class="label">Per-email funnel · sent, open, click, reply, drop</div>
+      <h2>Email sequence <em>performance.</em></h2>
+      <span class="source pending" id="src-emails"><span class="dot"></span>ESP webhook · pending wiring</span>
+    </div>
+
+    <div class="emails">
+      <div class="head">
+        <span>#</span>
+        <span>Subject</span>
+        <span>Delivered</span>
+        <span>Open rate</span>
+        <span>CTR</span>
+        <span class="col-rpl">Reply rate</span>
+        <span class="col-unsub">Unsub</span>
+        <span class="col-bnc">Bounced</span>
+      </div>
+      <div class="row" data-email="1">
+        <span class="num">E1</span>
+        <div class="subj">Your quiz result, and a quiet question<span class="sub">Subject A · arrives day 0</span></div>
+        <div class="n muted" data-k="e1_delivered">—</div>
+        <div class="n muted" data-k="e1_open">—<span class="pct">open</span><div class="bar"><div class="fill" data-bar="e1_open"></div></div></div>
+        <div class="n muted" data-k="e1_ctr">—<span class="pct">ctr</span><div class="bar"><div class="fill" data-bar="e1_ctr"></div></div></div>
+        <div class="n muted col-rpl" data-k="e1_reply">—<span class="pct">reply</span></div>
+        <div class="n muted col-unsub" data-k="e1_unsub">—</div>
+        <div class="n muted col-bnc" data-k="e1_bnc">—</div>
+      </div>
+      <div class="row" data-email="2">
+        <span class="num">E2</span>
+        <div class="subj">A favor — and a forwardable invite<span class="sub">Forward share UTM · day 2</span></div>
+        <div class="n muted" data-k="e2_delivered">—</div>
+        <div class="n muted" data-k="e2_open">—<span class="pct">open</span><div class="bar"><div class="fill" data-bar="e2_open"></div></div></div>
+        <div class="n muted" data-k="e2_ctr">—<span class="pct">ctr</span><div class="bar"><div class="fill" data-bar="e2_ctr"></div></div></div>
+        <div class="n muted col-rpl" data-k="e2_reply">—<span class="pct">reply</span></div>
+        <div class="n muted col-unsub" data-k="e2_unsub">—</div>
+        <div class="n muted col-bnc" data-k="e2_bnc">—</div>
+      </div>
+      <div class="row" data-email="3">
+        <span class="num">E3</span>
+        <div class="subj">Daniel in Babylon — and the ask<span class="sub">AB-02 structure · day 5</span></div>
+        <div class="n muted" data-k="e3_delivered">—</div>
+        <div class="n muted" data-k="e3_open">—<span class="pct">open</span><div class="bar"><div class="fill" data-bar="e3_open"></div></div></div>
+        <div class="n muted" data-k="e3_ctr">—<span class="pct">ctr</span><div class="bar"><div class="fill" data-bar="e3_ctr"></div></div></div>
+        <div class="n muted col-rpl" data-k="e3_reply">—<span class="pct">reply</span></div>
+        <div class="n muted col-unsub" data-k="e3_unsub">—</div>
+        <div class="n muted col-bnc" data-k="e3_bnc">—</div>
+      </div>
+      <div class="row" data-email="4">
+        <span class="num">E4</span>
+        <div class="subj">15 minutes, on the record<span class="sub">Calendly + async fork · day 9</span></div>
+        <div class="n muted" data-k="e4_delivered">—</div>
+        <div class="n muted" data-k="e4_open">—<span class="pct">open</span><div class="bar"><div class="fill" data-bar="e4_open"></div></div></div>
+        <div class="n muted" data-k="e4_ctr">—<span class="pct">ctr</span><div class="bar"><div class="fill" data-bar="e4_ctr"></div></div></div>
+        <div class="n muted col-rpl" data-k="e4_reply">—<span class="pct">reply</span></div>
+        <div class="n muted col-unsub" data-k="e4_unsub">—</div>
+        <div class="n muted col-bnc" data-k="e4_bnc">—</div>
+      </div>
+      <div class="row" data-email="5">
+        <span class="num">E5</span>
+        <div class="subj">Last one — and a graceful exit<span class="sub">AB-03 social proof · day 14</span></div>
+        <div class="n muted" data-k="e5_delivered">—</div>
+        <div class="n muted" data-k="e5_open">—<span class="pct">open</span><div class="bar"><div class="fill" data-bar="e5_open"></div></div></div>
+        <div class="n muted" data-k="e5_ctr">—<span class="pct">ctr</span><div class="bar"><div class="fill" data-bar="e5_ctr"></div></div></div>
+        <div class="n muted col-rpl" data-k="e5_reply">—<span class="pct">reply</span></div>
+        <div class="n muted col-unsub" data-k="e5_unsub">—</div>
+        <div class="n muted col-bnc" data-k="e5_bnc">—</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §03 two-up: cold outreach + substack -->
+  <section class="section s03 fade-in d3">
+    <div class="section-head">
+      <div class="label">Outbound research recruitment · newsletter overlay</div>
+      <h2>Cold outreach &amp; <em>Substack.</em></h2>
+    </div>
+
+    <div class="two-up">
+      <div class="panel">
+        <h3>Pastor + thought-leader interviews</h3>
+        <div class="ref">Cold outreach · CSV-driven</div>
+        <div class="pipeline">
+          <div class="stage"><div class="l">Sent</div><div class="n" data-k="cold_sent">—</div></div>
+          <div class="stage"><div class="l">Opened</div><div class="n" data-k="cold_opened">—</div><div class="pct" data-k="cold_open_pct">—</div></div>
+          <div class="stage"><div class="l">Replied</div><div class="n" data-k="cold_replied">—</div><div class="pct" data-k="cold_reply_pct">—</div></div>
+          <div class="stage"><div class="l">Booked</div><div class="n" data-k="cold_booked">—</div><div class="pct" data-k="cold_booked_pct">—</div></div>
+          <div class="stage"><div class="l">Bounced</div><div class="n" data-k="cold_bounced">—</div></div>
+        </div>
+        <div class="foot">
+          <span>Source · CSV outreach tool</span>
+          <span class="empty" id="src-cold">Pending wiring</span>
+        </div>
+      </div>
+
+      <div class="panel">
+        <h3>Disciple AI newsletter</h3>
+        <div class="ref">Substack · weekly Wednesday</div>
+        <div class="grid">
+          <div class="cell"><div class="l">Subscribers</div><div class="n" data-k="sub_count">—</div><div class="sub" data-k="sub_growth">—</div></div>
+          <div class="cell"><div class="l">Posts</div><div class="n" data-k="sub_posts">—</div><div class="sub" data-k="sub_latest">—</div></div>
+          <div class="cell"><div class="l">Avg open rate</div><div class="n muted" data-k="sub_open">—<span class="pct">open</span></div><div class="sub">Last 8 sends</div></div>
+          <div class="cell"><div class="l">Avg CTR</div><div class="n muted" data-k="sub_ctr">—<span class="pct">ctr</span></div><div class="sub">Last 8 sends</div></div>
+        </div>
+        <div class="foot">
+          <a href="https://DiscipleAI.substack.com" target="_blank" rel="noopener">Open on Substack →</a>
+          <span id="src-sub" class="empty">RSS · live</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- §04 A/B register -->
+  <section class="section s04 fade-in d4 tight">
+    <div class="section-head">
+      <div class="label">Active A/B tests · primary metric per test</div>
+      <h2>What we're <em>testing.</em></h2>
+    </div>
+
+    <div class="emails">
+      <div class="head" style="grid-template-columns:80px 1fr 1.2fr 1.2fr 120px 100px;">
+        <span>Test</span>
+        <span>Email · variable</span>
+        <span>Variant A</span>
+        <span>Variant B</span>
+        <span>Primary metric</span>
+        <span>Status</span>
+      </div>
+      <div class="row" style="grid-template-columns:80px 1fr 1.2fr 1.2fr 120px 100px;">
+        <span class="num">AB-01</span>
+        <div class="subj">E1 · subject line tone</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">"Your quiz result, and a quiet question"</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">"Re: the quiz, {{first_name}}"</div>
+        <div class="n muted" style="font-size:13px;font-family:var(--font-mono);letter-spacing:.05em;">Reply rate</div>
+        <div class="n muted" style="font-size:11px;font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tob);">Pending</div>
+      </div>
+      <div class="row" style="grid-template-columns:80px 1fr 1.2fr 1.2fr 120px 100px;">
+        <span class="num">AB-02</span>
+        <div class="subj">E3 · structure</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">Scripture-led (Daniel framing)</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">Ask-led (scripture as support)</div>
+        <div class="n muted" style="font-size:13px;font-family:var(--font-mono);letter-spacing:.05em;">CTR to Calendly</div>
+        <div class="n muted" style="font-size:11px;font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--tob);">Pending</div>
+      </div>
+      <div class="row" style="grid-template-columns:80px 1fr 1.2fr 1.2fr 120px 100px;">
+        <span class="num">AB-03</span>
+        <div class="subj">E5 · P.S. social proof</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">Qualitative ("conversations have been useful")</div>
+        <div class="n muted" style="font-size:14px;font-family:var(--font-serif);">Quantitative ("X men have said yes")</div>
+        <div class="n muted" style="font-size:13px;font-family:var(--font-mono);letter-spacing:.05em;">Booking rate</div>
+        <div class="n muted" style="font-size:11px;font-family:var(--font-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ox);">Blocked</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="scripture">"Whoever sows sparingly will also reap sparingly, and whoever sows generously will also reap generously."</p>
+    <span class="ref">2 Corinthians 9:6</span>
+  </footer>
+
+</div>
+
+<script>
+const fmt = (n, type='int') => {
+  if (n === null || n === undefined || Number.isNaN(n)) return '—';
+  if (type === 'pct') return (Math.round(n * 1000) / 10).toFixed(1) + '%';
+  if (type === 'pct1') return (Math.round(n * 10) / 10).toFixed(1) + '%';
+  if (type === 'int') return new Intl.NumberFormat('en-US').format(Math.round(n));
+  return n;
+};
+
+const setText = (k, v) => {
+  document.querySelectorAll(`[data-k="${k}"]`).forEach(el => {
+    // Replace only the leading text node; keep any child .pct span and .bar div.
+    const first = el.firstChild;
+    if (first && first.nodeType === Node.TEXT_NODE) {
+      first.nodeValue = v + ' ';
+    } else {
+      el.insertBefore(document.createTextNode(v + ' '), el.firstChild);
+    }
+    if (v !== '—') el.classList.remove('muted');
+  });
+};
+
+const setBar = (k, pct) => {
+  document.querySelectorAll(`[data-bar="${k}"]`).forEach(el => {
+    const w = Math.max(0, Math.min(100, pct * 100));
+    el.style.width = w + '%';
+    el.classList.remove('floor','target','strong');
+    // Benchmark thresholds (rough): floor < target < strong
+    if (k.endsWith('_open')) {
+      if (w >= 50) el.classList.add('strong');
+      else if (w >= 40) el.classList.add('target');
+      else if (w >= 30) el.classList.add('floor');
+    } else if (k.endsWith('_ctr')) {
+      if (w >= 15) el.classList.add('strong');
+      else if (w >= 10) el.classList.add('target');
+      else if (w >= 6) el.classList.add('floor');
+    }
+  });
+};
+
+const updateSource = (id, status, note) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.classList.remove('live','pending');
+  el.classList.add(status);
+  // keep .dot
+  const dot = el.querySelector('.dot');
+  el.innerHTML = '';
+  if (dot) el.appendChild(dot);
+  el.appendChild(document.createTextNode(note));
+};
+
+async function load() {
+  let data = {};
+  try {
+    const r = await fetch('/api/metrics', { credentials: 'same-origin' });
+    if (r.status === 401) { window.location = '/login'; return; }
+    data = await r.json();
+  } catch (e) {
+    console.error('metrics load failed', e);
+    return;
+  }
+
+  // Funnel
+  const f = data.funnel || {};
+  setText('visits', fmt(f.visits));
+  setText('visits_delta', f.visits_delta != null ? fmt(f.visits_delta, 'int') : '—');
+  setText('quiz_started', fmt(f.quiz_started));
+  setText('start_rate', f.start_rate != null ? fmt(f.start_rate, 'pct1') : '—');
+  setText('quiz_completes', fmt(f.quiz_completes));
+  setText('complete_rate', f.complete_rate != null ? fmt(f.complete_rate, 'pct1') : '—');
+  setText('optins', fmt(f.optins));
+  setText('optin_rate', f.optin_rate != null ? fmt(f.optin_rate, 'pct1') : '—');
+  setText('open_to_meet', fmt(f.open_to_meet));
+  setText('otm_rate', f.otm_rate != null ? fmt(f.otm_rate, 'pct1') : '—');
+  setText('booked', fmt(f.booked));
+  setText('booked_rate', f.booked_rate != null ? fmt(f.booked_rate, 'pct1') : '—');
+  setText('booked_rate_v', f.booked_rate != null ? fmt(f.booked_rate, 'pct1') : '—');
+  setText('bench_note', data.bench_note || 'Awaiting data');
+
+  // Emails
+  (data.emails || []).forEach(e => {
+    setText(`e${e.num}_delivered`, fmt(e.delivered));
+    setText(`e${e.num}_open`, e.open_rate != null ? fmt(e.open_rate, 'pct1') : '—');
+    setText(`e${e.num}_ctr`, e.ctr != null ? fmt(e.ctr, 'pct1') : '—');
+    setText(`e${e.num}_reply`, e.reply_rate != null ? fmt(e.reply_rate, 'pct1') : '—');
+    setText(`e${e.num}_unsub`, fmt(e.unsubscribed));
+    setText(`e${e.num}_bnc`, fmt(e.bounced));
+    if (e.open_rate != null) setBar(`e${e.num}_open`, e.open_rate);
+    if (e.ctr != null) setBar(`e${e.num}_ctr`, e.ctr);
+  });
+
+  // Cold outreach
+  const c = data.cold || {};
+  setText('cold_sent', fmt(c.sent));
+  setText('cold_opened', fmt(c.opened));
+  setText('cold_open_pct', c.open_rate != null ? fmt(c.open_rate, 'pct1') : '—');
+  setText('cold_replied', fmt(c.replied));
+  setText('cold_reply_pct', c.reply_rate != null ? fmt(c.reply_rate, 'pct1') : '—');
+  setText('cold_booked', fmt(c.booked));
+  setText('cold_booked_pct', c.booked_rate != null ? fmt(c.booked_rate, 'pct1') : '—');
+  setText('cold_bounced', fmt(c.bounced));
+
+  // Substack
+  const s = data.substack || {};
+  setText('sub_count', s.subscribers != null ? fmt(s.subscribers) : '—');
+  setText('sub_posts', fmt(s.post_count));
+  setText('sub_latest', s.latest_post ? `Latest · ${s.latest_post}` : '—');
+  setText('sub_open', s.avg_open_rate != null ? fmt(s.avg_open_rate, 'pct1') : '—');
+  setText('sub_ctr', s.avg_ctr != null ? fmt(s.avg_ctr, 'pct1') : '—');
+  setText('sub_growth', s.growth_30d != null ? (s.growth_30d >= 0 ? '+' : '') + fmt(s.growth_30d) + ' · 30d' : 'Pending');
+
+  // Sources
+  const sources = data.sources || {};
+  if (sources.funnel) updateSource('src-funnel', sources.funnel.status, sources.funnel.note);
+  if (sources.emails) updateSource('src-emails', sources.emails.status, sources.emails.note);
+  if (sources.substack) document.getElementById('src-sub').textContent = sources.substack.note;
+  if (sources.cold) document.getElementById('src-cold').textContent = sources.cold.note;
+
+  // Last updated stamp
+  const updated = data.updated_at ? new Date(data.updated_at) : new Date();
+  document.getElementById('last-updated').textContent =
+    'Updated ' + updated.toLocaleString('en-US', { month:'short', day:'numeric', hour:'numeric', minute:'2-digit' });
+}
+
+document.getElementById('logout').addEventListener('click', async () => {
+  await fetch('/api/logout', { method: 'POST', credentials: 'same-origin' });
+  window.location = '/login';
+});
+
+load();
+</script>
+</body>
+</html>

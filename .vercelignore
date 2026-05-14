@@ -1,0 +1,11 @@
+# Reference + internal content; never web-deploy.
+marketing/
+docs/
+tests/
+supabase/
+PRD.md
+DEPLOY.md
+.env
+.env.example
+design.tar.gz
+disciple-ai-design-system/
