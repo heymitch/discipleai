@@ -272,7 +272,7 @@ footer .legal{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;
     <div class="label">§ Start here</div>
     <h2>Get the <em>Quick Start</em> guide.</h2>
     <p class="lede">A short, practical guide to using AI for faith without losing the thread. Free. Lands in your inbox. The weekly prompt follows on Wednesday.</p>
-    <form class="signup" action="https://DiscipleAI.substack.com/api/v1/free?nojs=true" method="POST" target="_blank">
+    <form class="signup" id="signup-form" action="https://DiscipleAI.substack.com/api/v1/free?nojs=true" method="POST" target="_blank">
       <input type="email" name="email" placeholder="you@example.com" required aria-label="Email address">
       <input type="hidden" name="first_url" value="https://discipleai.substack.com">
       <input type="hidden" name="first_referrer" value="">
@@ -280,7 +280,7 @@ footer .legal{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;
       <input type="hidden" name="current_referrer" value="">
       <input type="hidden" name="referral_code" value="">
       <input type="hidden" name="source" value="landing-page">
-      <button type="submit">Send the guide →</button>
+      <button type="submit" id="signup-submit">Send the guide →</button>
     </form>
     <p class="signup-fine">Or subscribe directly on <a href="https://DiscipleAI.substack.com" target="_blank" rel="noopener">DiscipleAI.substack.com</a>. One email a week. Unsubscribe whenever.</p>
   </div>
@@ -315,6 +315,28 @@ footer .legal{border-top:1px solid var(--line);margin-top:48px;padding-top:24px;
 </footer>
 
 <script>
+  /* ── signup: POST to Substack, then land on the thank-you page ── */
+  (function(){
+    var form = document.getElementById('signup-form');
+    if(!form) return;
+    form.addEventListener('submit', function(e){
+      var emailInput = form.querySelector('input[name="email"]');
+      if(!emailInput || !emailInput.value) return; /* let native validation handle it */
+      e.preventDefault();
+      /* Stop the new-tab fallback now that JS is taking over */
+      form.removeAttribute('target');
+      var btn = document.getElementById('signup-submit');
+      if(btn){ btn.disabled = true; btn.textContent = 'Sending…'; }
+      var data = new FormData(form);
+      var go = function(){ window.location.href = '/quickstart.html'; };
+      /* no-cors: we can't read the response, but Substack still records the signup
+         and fires the confirmation email. That's all we need before the redirect. */
+      fetch(form.action, { method:'POST', mode:'no-cors', body:data })
+        .then(go)
+        .catch(go);
+    });
+  })();
+
   (function(){
     var btn = document.getElementById('copy-prompt');
     var src = document.getElementById('hero-prompt');

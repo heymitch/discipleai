@@ -1,0 +1,765 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Disciple AI — Quick Start Guide</title>
+<meta name="description" content="A short, printable guide to AI assistants, harnesses, and the vocabulary you need. Built for faith-first users.">
+<link rel="icon" href="assets/favicon.svg">
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+/* ─────────────────────────────────────────────
+   Printable Quick Start
+   White canvas. Editorial typography ported from
+   the landing page. Accents (oxblood, gilt) used
+   only on thin strokes and text — no ink-bricking
+   background fills.
+   ───────────────────────────────────────────── */
+
+:root{
+  --bg:        #FFFFFF;
+  --ink:       #1A1613;
+  --ink-2:     #2B241E;
+  --ink-3:     #5A4E44;
+  --ink-4:     #8A7E72;
+  --rule:      #D9CFC0;
+  --rule-2:    #C8BCA9;
+  --rule-3:    #EFE6D4;
+  --ox:        #6E2019;
+  --ox-2:      #8A2A20;
+  --tob:       #A6572C;
+  --forest:    #3D4A3A;
+  --gilt:      #B08A3E;
+}
+
+*{box-sizing:border-box;}
+html,body{background:var(--bg);}
+body{
+  margin:0;
+  color:var(--ink);
+  font-family:var(--font-serif);
+  font-size:16.5px;
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  font-feature-settings:'kern','liga','onum';
+}
+
+.page{max-width:780px;margin:0 auto;padding:64px 56px 80px;}
+
+/* ── masthead ───────────────────────────────── */
+.mast{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  border-bottom:1px solid var(--ink);
+  padding-bottom:14px;
+  margin-bottom:48px;
+}
+.mast .brand{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:22px;
+  letter-spacing:-.01em;
+  color:var(--ink);
+}
+.mast .brand .ai{
+  font-family:var(--font-mono);
+  font-size:12.5px;
+  color:var(--ox);
+  letter-spacing:.22em;
+  margin-left:3px;
+}
+.mast .meta{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  text-align:right;
+  line-height:1.4;
+}
+.mast .meta .v{color:var(--gilt);}
+
+/* ── welcome strip (web only) ──────────────── */
+.welcome{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:24px;
+  padding:14px 18px;
+  border:1px solid var(--rule);
+  border-left:2px solid var(--ox);
+  margin-bottom:48px;
+}
+.welcome-text{
+  font-family:var(--font-serif);
+  font-size:15.5px;
+  line-height:1.5;
+  color:var(--ink-2);
+}
+.welcome-text .wm{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ox);
+  margin-right:10px;
+}
+.print-btn{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  background:transparent;
+  border:1px solid var(--ink);
+  border-radius:2px;
+  padding:8px 14px;
+  cursor:pointer;
+  flex-shrink:0;
+  transition:background .15s,color .15s;
+}
+.print-btn:hover{background:var(--ink);color:#FFFFFF;}
+
+/* ── what's next strip ─────────────────────── */
+.next-up{
+  margin-top:64px;
+  padding:24px 0;
+  border-top:1px solid var(--ink);
+  border-bottom:1px solid var(--rule);
+}
+.next-up .n{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-bottom:10px;
+}
+.next-up h3{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:26px;
+  line-height:1.15;
+  letter-spacing:-.01em;
+  margin:0 0 8px;
+  color:var(--ink);
+}
+.next-up h3 em{font-style:italic;color:var(--ox);font-weight:400;}
+.next-up p{
+  font-family:var(--font-serif);
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--ink-2);
+  margin:0;
+  max-width:62ch;
+}
+
+/* ── title block ────────────────────────────── */
+.title-block{margin-bottom:56px;}
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  margin-bottom:22px;
+}
+.eyebrow::before{
+  content:'';width:24px;height:1px;background:var(--gilt);opacity:.7;
+}
+h1.title{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:clamp(3rem,7vw,4.6rem);
+  line-height:.95;
+  letter-spacing:-.03em;
+  margin:0 0 22px;
+  color:var(--ink);
+}
+h1.title em{font-style:italic;color:var(--ox);font-weight:400;}
+.lede{
+  font-family:var(--font-serif);
+  font-size:19px;
+  line-height:1.55;
+  color:var(--ink-2);
+  margin:0;
+  max-width:62ch;
+}
+.lede.dropcap::first-letter{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:4.2em;
+  float:left;
+  line-height:.85;
+  padding:.06em .14em 0 0;
+  color:var(--ox);
+}
+
+/* ── section heading ────────────────────────── */
+.section{margin:56px 0 0;}
+.sec-label{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  margin:0 0 12px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.sec-label .num{color:var(--gilt);}
+.sec-label::after{
+  content:'';flex:1;height:1px;background:var(--rule);
+}
+h2.sec{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:36px;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:0 0 18px;
+  color:var(--ink);
+}
+h2.sec em{font-style:italic;color:var(--ox);font-weight:400;}
+.sec-intro{
+  font-family:var(--font-serif);
+  font-size:17px;
+  line-height:1.6;
+  color:var(--ink-2);
+  margin:0 0 28px;
+  max-width:64ch;
+}
+
+/* ── assistant cards ────────────────────────── */
+.assistants{display:grid;grid-template-columns:1fr;gap:0;border-top:1px solid var(--rule);}
+.asst{
+  display:grid;
+  grid-template-columns:170px 1fr;
+  gap:28px;
+  padding:24px 0;
+  border-bottom:1px solid var(--rule);
+}
+.asst .head .name{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:24px;
+  letter-spacing:-.01em;
+  margin:0 0 4px;
+  color:var(--ink);
+}
+.asst .head .name em{font-style:italic;color:var(--ox);font-weight:400;}
+.asst .head .tag{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-bottom:8px;
+  display:inline-block;
+}
+.asst .head .url{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--ink-3);
+  letter-spacing:.04em;
+}
+.asst .body p{margin:0 0 8px;font-size:15.5px;line-height:1.55;color:var(--ink-2);max-width:60ch;}
+.asst .body p:last-child{margin-bottom:0;}
+.asst .body p .lbl{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin-right:8px;
+}
+.asst .body p .lbl.pos{color:var(--forest);}
+.asst .body p .lbl.neg{color:var(--ox);}
+
+/* ── pull quote / pick of the litter ────────── */
+.pick{
+  border-left:2px solid var(--ox);
+  padding:6px 0 6px 22px;
+  margin:32px 0;
+  font-family:var(--font-serif);
+  font-style:italic;
+  font-size:18px;
+  line-height:1.55;
+  color:var(--ink-2);
+  max-width:62ch;
+}
+.pick .who{
+  display:block;
+  font-style:normal;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-top:10px;
+}
+
+/* ── harness grid ───────────────────────────── */
+.harness{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.harness .h-cell{
+  padding:22px 22px 22px 0;
+  border-right:1px solid var(--rule);
+}
+.harness .h-cell:last-child{border-right:0;padding-right:0;}
+.harness .h-cell:nth-child(2){padding-left:22px;}
+.harness .h-cell:nth-child(3){padding-left:22px;}
+.harness .h-cell .n{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-bottom:8px;
+}
+.harness .h-cell .t{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:20px;
+  margin:0 0 6px;
+  letter-spacing:-.01em;
+}
+.harness .h-cell .t em{font-style:italic;color:var(--ox);font-weight:400;}
+.harness .h-cell p{
+  font-family:var(--font-serif);
+  font-size:14.5px;
+  line-height:1.55;
+  color:var(--ink-2);
+  margin:0;
+}
+
+/* ── inline prompt example ──────────────────── */
+.prompt{
+  font-family:var(--font-mono);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--ink);
+  border:1px solid var(--rule);
+  border-left:2px solid var(--ox);
+  padding:14px 18px;
+  margin:24px 0;
+  max-width:62ch;
+}
+.prompt::before{content:'> ';color:var(--ox);}
+
+/* ── glossary ───────────────────────────────── */
+.glossary{
+  border-top:1px solid var(--rule);
+  margin-top:8px;
+}
+.gl{
+  display:grid;
+  grid-template-columns:200px 1fr;
+  gap:24px;
+  padding:16px 0;
+  border-bottom:1px solid var(--rule);
+}
+.gl .term{
+  font-family:var(--font-mono);
+  font-size:13px;
+  letter-spacing:.02em;
+  color:var(--ink);
+  font-weight:500;
+}
+.gl .term .lvl{
+  display:block;
+  font-family:var(--font-mono);
+  font-size:9.5px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-top:4px;
+  font-weight:400;
+}
+.gl .def{
+  font-family:var(--font-serif);
+  font-size:15.5px;
+  line-height:1.55;
+  color:var(--ink-2);
+  margin:0;
+  max-width:60ch;
+}
+.gl .def em{color:var(--ox);font-style:italic;}
+
+/* ── image-model strip (de-emphasized) ──────── */
+.image-models{
+  margin-top:8px;
+  padding:18px 0;
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.image-models .row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.image-models .cell .n{
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--gilt);
+  margin-bottom:4px;
+}
+.image-models .cell .t{
+  font-family:var(--font-serif);
+  font-weight:500;
+  font-size:17px;
+  margin:0 0 4px;
+}
+.image-models .cell p{
+  font-family:var(--font-serif);
+  font-size:13.5px;
+  line-height:1.5;
+  color:var(--ink-2);
+  margin:0;
+}
+
+/* ── footer / colophon ──────────────────────── */
+.colophon{
+  margin-top:64px;
+  padding-top:18px;
+  border-top:1px solid var(--ink);
+  display:flex;
+  justify-content:space-between;
+  font-family:var(--font-mono);
+  font-size:10.5px;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-3);
+  flex-wrap:wrap;
+  gap:12px;
+}
+.colophon .mark{color:var(--gilt);}
+
+/* ── responsive (web) ───────────────────────── */
+@media (max-width:720px){
+  .page{padding:40px 24px 64px;}
+  .asst{grid-template-columns:1fr;gap:8px;}
+  .harness{grid-template-columns:1fr;}
+  .harness .h-cell{border-right:0;border-bottom:1px solid var(--rule);padding:18px 0;}
+  .harness .h-cell:last-child{border-bottom:0;}
+  .harness .h-cell:nth-child(2),
+  .harness .h-cell:nth-child(3){padding-left:0;}
+  .image-models .row{grid-template-columns:1fr 1fr;gap:16px;}
+  .gl{grid-template-columns:1fr;gap:6px;}
+  .mast{flex-direction:column;align-items:flex-start;gap:8px;}
+  .mast .meta{text-align:left;}
+}
+
+/* ── print ──────────────────────────────────── */
+@page{
+  size:letter;
+  margin:0.6in 0.7in;
+}
+@media print{
+  html,body{background:#FFFFFF;}
+  body{font-size:11pt;line-height:1.45;}
+  .page{padding:0;max-width:none;}
+  .welcome,.print-btn,.next-up{display:none;}
+  h1.title{font-size:42pt;}
+  h2.sec{font-size:22pt;}
+  .lede{font-size:13pt;}
+  .sec-intro{font-size:11.5pt;}
+  .asst .head .name{font-size:15pt;}
+  .asst .body p{font-size:10.5pt;}
+  .pick{font-size:12pt;}
+  .gl .def{font-size:10.5pt;}
+  .prompt{font-size:10pt;}
+  .section{break-inside:avoid-page;page-break-inside:avoid;}
+  .asst,.gl,.harness .h-cell{break-inside:avoid;page-break-inside:avoid;}
+  h2.sec{break-after:avoid;page-break-after:avoid;}
+  .colophon{break-before:auto;}
+  a{color:var(--ink);text-decoration:none;}
+  /* keep accent colors thin enough to print cleanly */
+  .eyebrow,.sec-label .num,.gl .term .lvl,.harness .h-cell .n,
+  .image-models .cell .n,.asst .head .tag,.pick .who,.colophon .mark{
+    color:#7A5E2A;
+  }
+  h1.title em,h2.sec em,.harness .h-cell .t em,
+  .asst .head .name em,.gl .def em,.prompt::before,
+  .pick,.asst .body p .lbl.neg{color:#5A1A14;}
+}
+</style>
+</head>
+<body>
+
+<main class="page">
+
+  <!-- ── masthead ─────────────────────────── -->
+  <header class="mast">
+    <div class="brand">Disciple<span class="ai">AI</span></div>
+    <div class="meta">
+      <div>Quick Start <span class="v">·</span> v.1</div>
+      <div>A reference for the rest of us</div>
+    </div>
+  </header>
+
+  <!-- ── welcome strip ────────────────────── -->
+  <aside class="welcome" aria-label="Welcome">
+    <div class="welcome-text">
+      <span class="wm">You're in.</span>
+      Check your inbox for the confirmation, then keep this on the desk. Wednesday 06:00 — the first prompt lands.
+    </div>
+    <button class="print-btn" type="button" onclick="window.print()" aria-label="Print this guide">Print →</button>
+  </aside>
+
+  <!-- ── title ────────────────────────────── -->
+  <section class="title-block">
+    <div class="eyebrow">A short, printable guide</div>
+    <h1 class="title">The four assistants <em>&amp; what they're for.</em></h1>
+    <p class="lede dropcap">There are a lot of AI tools now, and most of the noise about them is wrong in opposite directions. This guide names the four assistants you'll actually meet, the harnesses that bolt them to real work, and the words you need to follow a conversation. Read it once. Keep it on the desk. Bring it back when the next thing launches — and it will.</p>
+  </section>
+
+  <!-- ── § 01 — assistants ────────────────── -->
+  <section class="section">
+    <div class="sec-label"><span class="num">§ 01</span> The four assistants</div>
+    <h2 class="sec">Same idea. <em>Different houses.</em></h2>
+    <p class="sec-intro">Each of these is a chat interface that sits on top of a large language model. They will all answer most questions. They differ in tone, in what they will not say, and in what they are quietly best at. Pick by job, not by loyalty.</p>
+
+    <div class="assistants">
+
+      <div class="asst">
+        <div class="head">
+          <span class="tag">Anthropic</span>
+          <div class="name">Claude</div>
+          <div class="url">claude.ai</div>
+        </div>
+        <div class="body">
+          <p><span class="lbl pos">Best for</span> Long-form thinking, nuanced reasoning, writing that needs care, theology that needs patience.</p>
+          <p><span class="lbl pos">Strength</span> Will tell you when it doesn't know. Most willing to sit with a hard question instead of resolving it.</p>
+          <p><span class="lbl neg">Watch for</span> Defaults can lean cautious and progressive — system instructions move the needle if you set them.</p>
+        </div>
+      </div>
+
+      <div class="asst">
+        <div class="head">
+          <span class="tag">OpenAI</span>
+          <div class="name">ChatGPT</div>
+          <div class="url">chatgpt.com</div>
+        </div>
+        <div class="body">
+          <p><span class="lbl pos">Best for</span> A general everyday assistant. Voice mode is the best of the four. Built-in image generation works without ceremony.</p>
+          <p><span class="lbl pos">Strength</span> The most polished consumer experience. The widest ecosystem (Custom GPTs, plugins, mobile app).</p>
+          <p><span class="lbl neg">Watch for</span> A recognizable "house voice." Same political default tilt as Claude unless you steer it.</p>
+        </div>
+      </div>
+
+      <div class="asst">
+        <div class="head">
+          <span class="tag">xAI</span>
+          <div class="name">Grok <em>— the pick for one-offs</em></div>
+          <div class="url">grok.com</div>
+        </div>
+        <div class="body">
+          <p><span class="lbl pos">Best for</span> One-off prompts. Current events. Anything that benefits from live search or reading what's happening on X.</p>
+          <p><span class="lbl pos">Strength</span> The most search-native of the four. Tends most neutral politically and spiritually at default settings. Supports skills.</p>
+          <p><span class="lbl neg">Watch for</span> Smaller ecosystem. Fewer mature integrations than the older players.</p>
+        </div>
+      </div>
+
+      <div class="asst">
+        <div class="head">
+          <span class="tag">Google</span>
+          <div class="name">Gemini</div>
+          <div class="url">gemini.google.com</div>
+        </div>
+        <div class="body">
+          <p><span class="lbl pos">Best for</span> Creative quick-starts. First drafts of images. Sitting inside Gmail, Docs, and the rest of the Google stack.</p>
+          <p><span class="lbl pos">Strength</span> Fast, strong on images and video, native to where your calendar and inbox already live.</p>
+          <p><span class="lbl neg">Watch for</span> Less consistent for deep reasoning. Can be quick to hedge.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="pick">
+      For most of what we do — searching, checking, asking a single good question — Grok is the workhorse. It's the most neutral at defaults, the most search-biased, and the fastest path from question to a useful answer.
+      <span class="who">The short version</span>
+    </div>
+  </section>
+
+  <!-- ── § 02 — harnesses ─────────────────── -->
+  <section class="section">
+    <div class="sec-label"><span class="num">§ 02</span> Harnesses — when chat isn't enough</div>
+    <h2 class="sec">For the <em>work</em>, not the question.</h2>
+    <p class="sec-intro">A harness is the scaffolding around a model. It gives the model tools — your files, your calendar, the web, a terminal — and a place to do real work without you copy-pasting every step. If you're doing sermon prep, planning a series, running a weekly check-in, or wiring up a verse-of-the-day flow, you want a harness, not a chat tab.</p>
+
+    <div class="harness">
+      <div class="h-cell">
+        <div class="n">For everyday work</div>
+        <h3 class="t">Cowork <em>— most accessible</em></h3>
+        <p>Bundles AI with the apps you already use — calendar, email, notes, browser. Plugins for specific jobs. Closest thing to "AI in your real life" without a learning curve.</p>
+      </div>
+      <div class="h-cell">
+        <div class="n">For text-shaped projects</div>
+        <h3 class="t">Claude Code</h3>
+        <p>A terminal harness from Anthropic. Originally for coding; equally good at sermon outlines, study notes, multi-file projects. Reads and writes files on your machine. Skills, hooks, and slash commands.</p>
+      </div>
+      <div class="h-cell">
+        <div class="n">For coding tasks</div>
+        <h3 class="t">Codex</h3>
+        <p>OpenAI's coding agent. Sits in your editor or runs in the cloud against a repo. If your "work" is software, this is the one. Otherwise pass.</p>
+      </div>
+    </div>
+
+    <p class="sec-intro" style="margin-top:28px;">The rule of thumb: <em style="font-style:italic;color:var(--ox);">if you'd do it more than once, give it a harness.</em> A verse-of-the-day, a Sunday-morning check-in, a monthly review of the sermon series — those want a harness with a scheduled task and a skill. A single question on a Tuesday wants a chat tab.</p>
+
+    <div class="prompt">You are my sermon-prep second mind. Each week I'll paste the passage. Give me: three questions the text resists, one image I haven't seen before, and one place I'm tempted to soften the edge. Don't give applications until I ask.</div>
+  </section>
+
+  <!-- ── § 03 — image models ──────────────── -->
+  <section class="section">
+    <div class="sec-label"><span class="num">§ 03</span> Image models — a footnote</div>
+    <h2 class="sec">Useful. <em>Rarely necessary.</em></h2>
+    <p class="sec-intro">Most pastoral work doesn't need a picture. But when it does — a slide, a social post, a study-guide cover — these are the tools. Treat them as the spice rack, not the meal.</p>
+
+    <div class="image-models">
+      <div class="row">
+        <div class="cell">
+          <div class="n">Inside ChatGPT</div>
+          <div class="t">DALL·E / GPT Image</div>
+          <p>Lowest friction. Just ask. Good enough for slides and social.</p>
+        </div>
+        <div class="cell">
+          <div class="n">Inside Gemini</div>
+          <div class="t">Imagen / Nano Banana</div>
+          <p>Strong on photoreal and on iterative edits ("now make it dusk").</p>
+        </div>
+        <div class="cell">
+          <div class="n">Standalone</div>
+          <div class="t">Midjourney</div>
+          <p>The artist's pick. Steeper learning curve. The best-looking output.</p>
+        </div>
+        <div class="cell">
+          <div class="n">Standalone</div>
+          <div class="t">Ideogram</div>
+          <p>The one that gets typography right. Use it when there are words in the image.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── § 04 — glossary ──────────────────── -->
+  <section class="section">
+    <div class="sec-label"><span class="num">§ 04</span> Glossary</div>
+    <h2 class="sec">The vocabulary, <em>plainly.</em></h2>
+    <p class="sec-intro">If a word in the conversation made you nod and quietly resolve to look it up later — start here. Beginner terms first, intermediate after.</p>
+
+    <div class="glossary">
+
+      <div class="gl">
+        <div class="term">Prompt<span class="lvl">Beginner</span></div>
+        <p class="def">What you type into the model. The art is asking a <em>question you hadn't thought to ask</em> — not a vague request.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Token<span class="lvl">Beginner</span></div>
+        <p class="def">The unit a model thinks in — a word, a piece of a word, or a punctuation mark. Roughly four characters of English. Models charge per token and remember in tokens.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Context window<span class="lvl">Beginner</span></div>
+        <p class="def">How much the model can hold in mind at once. Bigger windows mean it can read a whole book; smaller windows mean it forgets the top of the conversation by the bottom.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">System prompt<span class="lvl">Beginner</span></div>
+        <p class="def">The instructions the model gets <em>before</em> you say anything — its rules of engagement. Most products have one baked in. When you set your own, you change its personality.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Hallucination<span class="lvl">Beginner</span></div>
+        <p class="def">When the model says something confidently false. It isn't lying; it's pattern-matching past the edge of what it knows. Verify anything that matters.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Multimodal<span class="lvl">Beginner</span></div>
+        <p class="def">A model that handles more than text — images, audio, video. All four assistants are multimodal now to varying degrees.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Harness<span class="lvl">Intermediate</span></div>
+        <p class="def">The scaffolding around a model that gives it tools and a place to work — Cowork, Claude Code, Codex. The model is the engine; the harness is the car.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Transformer<span class="lvl">Intermediate</span></div>
+        <p class="def">The architecture under every modern AI assistant. Introduced in 2017. Its trick is paying attention to every word in the input at once instead of reading left-to-right.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Pre-training<span class="lvl">Intermediate</span></div>
+        <p class="def">The long, expensive phase where a fresh model reads a sizable fraction of the internet and learns the shape of language. Months of compute. Done once per model.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Post-training<span class="lvl">Intermediate</span></div>
+        <p class="def">Everything done <em>after</em> pre-training to make a raw model into a useful assistant — instruction tuning, safety work, RLHF. Where most of the "personality" gets installed.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Fine-tuning<span class="lvl">Intermediate</span></div>
+        <p class="def">Taking a finished model and training it further on a narrower set of examples — your sermons, your style, your knowledge base — to specialize it.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">RLHF<span class="lvl">Intermediate</span></div>
+        <p class="def">Reinforcement Learning from Human Feedback. The most common post-training technique. Humans rate two answers; the model learns to prefer the higher-rated one. How the assistants get their manners.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Inference<span class="lvl">Intermediate</span></div>
+        <p class="def">The act of running the model after it's trained — generating an answer. What you pay for when you use an API.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Coding agent<span class="lvl">Intermediate</span></div>
+        <p class="def">A harness that lets the model actually do things — write files, run commands, hit the web — instead of just suggesting them. Claude Code and Codex are coding agents; Cowork bundles them for non-coders.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">Skill<span class="lvl">Intermediate</span></div>
+        <p class="def">A packaged set of instructions (and sometimes code) a harness can load on demand. A reusable recipe — "draft a sermon outline," "summarize this meeting" — that the model picks up when relevant.</p>
+      </div>
+
+      <div class="gl">
+        <div class="term">MCP<span class="lvl">Intermediate</span></div>
+        <p class="def">Model Context Protocol. The open standard for plugging tools into harnesses — your calendar, your notes app, a database. If a tool "supports MCP," any modern harness can use it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── what's next (web only) ───────────── -->
+  <section class="next-up" aria-label="What happens next">
+    <div class="n">§ Next — Wednesday 06:00</div>
+    <h3>One prompt. <em>That's it.</em></h3>
+    <p>The first weekly prompt lands in your inbox Wednesday morning. Ten minutes if you want them, a whole week if you have it. No streaks, no notifications — friction is the feature. If it doesn't arrive, check spam for <em style="font-style:italic;color:var(--ox);">DiscipleAI.substack.com</em>.</p>
+  </section>
+
+  <!-- ── colophon ─────────────────────────── -->
+  <footer class="colophon">
+    <span>© 2026 Disciple AI <span class="mark">·</span> One prompt a week</span>
+    <span>discipleai.substack.com <span class="mark">·</span> § Faith meets future</span>
+  </footer>
+
+</main>
+
+</body>
+</html>
