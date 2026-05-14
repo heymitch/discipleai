@@ -5,3 +5,7 @@ node_modules
 # Design source bundle (reference only, not part of deployable site)
 design.tar.gz
 disciple-ai-design-system/
+
+# Environment
+.env
+.env.local

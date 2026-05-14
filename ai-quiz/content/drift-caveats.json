@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "_note": "All copy below tagged [NEEDS_VOICE_REVIEW] — Mitch redlines into final voice before Phase 6 deploy.",
+  "caveats": {
+    "pioneer_drift": "[NEEDS_VOICE_REVIEW] Your answer to the final question suggests you may be drifting into worthy-successor territory — the idea that AI may eventually have moral status of its own. This is a real and increasingly common drift inside accelerationist Christianity, and it's a theological failure mode, not a feature of kingdom optimism. Imago Dei is not a stewardship category; it's an ontological one — humans bear God's image in a way no system we build will ever share. We've capped your grade at B not to punish you but to flag this. Pioneers who don't hold imago Dei firm become something else. Worth reading: Andy Crouch's *The Life We're Looking For*, C.S. Lewis's *That Hideous Strength*, and Wendell Berry on what it means to be a creature.",
+    "general_drift": "[NEEDS_VOICE_REVIEW] One of your answers signals openness to taking AI's moral status seriously as systems grow more capable. We flag this gently for any archetype — it's the largest theological drift risk on the AI horizon for Christians, and it cuts across denominations and traditions. Whatever else you believe about AI, hold imago Dei as a line that doesn't move."
+  }
+}
