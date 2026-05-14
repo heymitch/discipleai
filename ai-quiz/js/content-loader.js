@@ -25,10 +25,15 @@ export function assembleResultCopy(result, archetypesData, driftData) {
 }
 
 export async function loadResultContent() {
+  // Module-relative URL resolution — same rationale as in main.js loadContent.
+  const archetypesUrl = new URL('../content/archetypes.json', import.meta.url);
+  const driftUrl      = new URL('../content/drift-caveats.json', import.meta.url);
   const [archetypesRes, driftRes] = await Promise.all([
-    fetch('./content/archetypes.json'),
-    fetch('./content/drift-caveats.json'),
+    fetch(archetypesUrl),
+    fetch(driftUrl),
   ]);
+  if (!archetypesRes.ok) throw new Error(`archetypes.json ${archetypesRes.status}`);
+  if (!driftRes.ok)      throw new Error(`drift-caveats.json ${driftRes.status}`);
   return {
     archetypes: await archetypesRes.json(),
     drift: await driftRes.json(),

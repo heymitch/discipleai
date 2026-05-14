@@ -14,7 +14,12 @@ const state = {
 let resultContent = null;
 
 async function loadContent() {
-  const res = await fetch('./content/questions.json');
+  // Resolve relative to THIS module's URL so the fetch works whether the
+  // document is served at /ai-quiz or /ai-quiz/ (trailing slash difference
+  // would otherwise re-root the relative fetch to the wrong path).
+  const url = new URL('../content/questions.json', import.meta.url);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`questions.json ${res.status}`);
   const data = await res.json();
   state.questions = data.questions;
 }
