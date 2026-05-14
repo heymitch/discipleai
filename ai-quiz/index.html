@@ -4,44 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI Church Leadership Quiz — Disciple AI</title>
-<meta name="description" content="How prepared is your congregation for AI? Take the 11-question quiz, get your archetype, and join a conversation worth having.">
+<meta name="description" content="An 11-question essay in disguise. Where does your church stand on AI?">
 <meta property="og:title" content="AI Church Leadership Quiz — Disciple AI">
-<meta property="og:description" content="How prepared is your congregation for AI? Find out where you stand.">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="../assets/favicon.svg">
-<link rel="stylesheet" href="../colors_and_type.css">
-<link rel="stylesheet" href="quiz.css">
+<meta property="og:description" content="11 questions. 5 archetypes. A letter grade you can use.">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="/colors_and_type.css">
+<link rel="stylesheet" href="/ai-quiz/quiz.css">
 </head>
 <body>
 <main id="app" data-view="landing">
-  <section id="view-landing" class="view">
-    <div class="container">
-      <p class="eyebrow">A free tool from Disciple AI</p>
-      <h1>How prepared is your congregation for AI?</h1>
-      <p class="lede">11 questions. 5 archetypes. A letter grade you can actually use. No registration to take the quiz &mdash; your results are yours.</p>
-      <button class="btn-p" id="start-btn">Begin</button>
-    </div>
+
+  <section id="view-landing" class="view view-landing">
+    <article class="card">
+      <p class="chapter-mark">A free tool · Disciple AI</p>
+      <h1>How prepared is <em>your congregation</em> for AI?</h1>
+      <p class="lede">Eleven questions. Five archetypes. A letter grade you can actually use — and no detectable right answers, so the grade means something.</p>
+      <button class="begin-cta" id="start-btn">Begin the quiz</button>
+      <p class="landing-footer"><span>An 11-question essay in disguise · ≈ 5 minutes</span><hr></p>
+    </article>
   </section>
 
-  <section id="view-quiz" class="view" hidden>
-    <div class="container">
+  <section id="view-quiz" class="view view-quiz" hidden>
+    <article class="card">
       <header class="quiz-header">
-        <span class="progress" id="progress">1 / 11</span>
+        <div class="row">
+          <span class="left" id="progress-num">Question 01 · of 11</span>
+          <span class="right">No skips · No back-fills</span>
+        </div>
+        <div class="progress-marks" id="progress-marks" aria-hidden="true"></div>
       </header>
-      <article id="question" class="question"></article>
+      <div id="question" class="question"></div>
       <nav class="quiz-nav">
-        <button class="btn-s" id="back-btn" disabled>Back</button>
-        <button class="btn-p" id="next-btn" disabled>Next</button>
+        <button class="nav-link back" id="back-btn" disabled>← Back</button>
+        <button class="nav-link next" id="next-btn" disabled>Next →</button>
       </nav>
-    </div>
+    </article>
   </section>
 
-  <section id="view-result" class="view" hidden>
-    <div class="container" id="result-root">
-      <p>(Result page renders here once Phase 3 ships.)</p>
-    </div>
+  <section id="view-result" class="view view-result" hidden>
+    <article class="card" id="result-root"></article>
   </section>
+
 </main>
-<script type="module" src="js/main.js"></script>
+<script type="module" src="/ai-quiz/js/main.js"></script>
 </body>
 </html>
