@@ -1,0 +1,137 @@
+{
+  "version": 1,
+  "questions": [
+    {
+      "id": "q1",
+      "dimension": "theological_clarity",
+      "prompt": "When someone in your church asks you \"Is AI good or bad for the Christian life?\" what's closest to your honest answer?",
+      "options": [
+        { "key": "watchman",        "text": "AI is shaping up to be one of the most spiritually significant phenomena of our age, and we need to be ready for what it reveals about the times." },
+        { "key": "steward",         "text": "AI is a powerful technology that magnifies who we already are — for good or for ill — so wisdom and formation matter more than ever." },
+        { "key": "builder",         "text": "AI is a tool. Like every tool, it can be used well or poorly, and the church should be intentional about which uses serve the mission." },
+        { "key": "pioneer",         "text": "AI is a remarkable gift that could accelerate the church's calling — translation, accessibility, equipping — if we steward it with theological clarity." },
+        { "key": "preservationist", "text": "AI is something happening out there in the world. Our calling is the same as it always has been — to be a faithful, embodied people." }
+      ]
+    },
+    {
+      "id": "q2",
+      "dimension": "theological_clarity",
+      "prompt": "What's the most important theological truth for the church to hold as AI advances?",
+      "options": [
+        { "key": "watchman",        "text": "That we are in the last days, and our task is to discern the signs of the times faithfully." },
+        { "key": "steward",         "text": "That humans bear the image of God in a way no technology will ever replicate, and our practices must reflect that." },
+        { "key": "builder",         "text": "That every good gift comes from God and can be received with thanksgiving when used rightly." },
+        { "key": "pioneer",         "text": "That God has called humanity to creative stewardship of his world, and what we build can serve the kingdom." },
+        { "key": "preservationist", "text": "That the gospel does not need new tools to do its work — the Spirit, the Word, and the sacraments are sufficient." }
+      ]
+    },
+    {
+      "id": "q3",
+      "dimension": "pastoral_integrity",
+      "prompt": "Your associate pastor mentions she used AI to help draft Sunday's sermon. What's your first response?",
+      "options": [
+        { "key": "watchman",        "text": "\"Let's talk about what AI in sermon prep is doing to your sense of God's voice.\"" },
+        { "key": "steward",         "text": "\"Let's make sure we have a policy that protects the integrity of preaching.\"" },
+        { "key": "builder",         "text": "\"How did you use it — outline, research, polish? And was the congregation told?\"" },
+        { "key": "pioneer",         "text": "\"How did it serve the text? I want to learn from how you used it.\"" },
+        { "key": "preservationist", "text": "\"What made sermon prep feel so heavy this week? Let me carry some of it.\"" }
+      ]
+    },
+    {
+      "id": "q4",
+      "dimension": "pastoral_integrity",
+      "prompt": "A member tells you they've been talking to an AI chatbot every night for spiritual support — and they find it more helpful than your sermons. What do you do?",
+      "options": [
+        { "key": "watchman",        "text": "Take it as a signal of where the spiritual disorientation of our age is reaching our pews. Preach into it on Sunday." },
+        { "key": "steward",         "text": "Sit with them. Listen first. Then teach the difference between counsel and communion." },
+        { "key": "builder",         "text": "Ask what's working about it. Maybe the church needs to be more available for late-night spiritual conversation." },
+        { "key": "pioneer",         "text": "Get curious about what helped — then point them to spiritual practices and relationships only humans can offer." },
+        { "key": "preservationist", "text": "Invite them over for dinner. Some things only happen at a table." }
+      ]
+    },
+    {
+      "id": "q5",
+      "dimension": "operational_alignment",
+      "prompt": "Which best describes your church's current actual practice with AI (regardless of stated position)?",
+      "options": [
+        { "key": "watchman",        "text": "We're cautious — our staff knows we name AI as part of the larger cultural and spiritual landscape we're navigating." },
+        { "key": "steward",         "text": "We have written guidelines that say what we will and won't use AI for, and our staff trains to them." },
+        { "key": "builder",         "text": "We use it across admin, comms, and accessibility — with clear human ownership on every output." },
+        { "key": "pioneer",         "text": "We use it, we share what we learn, and we help other churches think through what's possible." },
+        { "key": "preservationist", "text": "We don't use it — embodied, pre-digital practice is part of what our community is for." }
+      ]
+    },
+    {
+      "id": "q6",
+      "dimension": "operational_alignment",
+      "prompt": "If a volunteer used AI to write a children's ministry curriculum without telling anyone, how would your church find out?",
+      "options": [
+        { "key": "watchman",        "text": "Discernment from leadership — we tend to notice when something feels off spiritually." },
+        { "key": "steward",         "text": "Our policy requires disclosure, so we'd find out through reporting." },
+        { "key": "builder",         "text": "We'd see it in our review workflow — curriculum gets vetted before it's used." },
+        { "key": "pioneer",         "text": "We've made AI use normal enough that the volunteer would have just told us." },
+        { "key": "preservationist", "text": "Our culture doesn't invite that kind of solo workflow — curriculum gets shaped in community here." }
+      ]
+    },
+    {
+      "id": "q7",
+      "dimension": "cultural_discernment",
+      "prompt": "What does the AI conversation look like in 10 years, and what does your church need to be ready for?",
+      "options": [
+        { "key": "watchman",        "text": "Significant cultural and spiritual upheaval — possibly the kind we're warned about. Our people need to be anchored in truth that doesn't move." },
+        { "key": "steward",         "text": "Powerful enough to require ongoing ethical work — our people need formation that can hold complexity." },
+        { "key": "builder",         "text": "Embedded in nearly everything — our people need fluency without losing their souls." },
+        { "key": "pioneer",         "text": "A meaningful new layer of human capability — our people need imagination for what's now possible in mission." },
+        { "key": "preservationist", "text": "Less central than the conversation assumes — our people need to be formed in the pace and presence God designed us for." }
+      ]
+    },
+    {
+      "id": "q8",
+      "dimension": "cultural_discernment",
+      "prompt": "How do you read the broader (non-Christian) AI conversation?",
+      "options": [
+        { "key": "watchman",        "text": "The hype is louder than the substance, and the moral compromises being made are alarming — Christians should be especially careful what they take in." },
+        { "key": "steward",         "text": "There's genuine signal beneath the noise, and Christians should learn enough to engage thoughtfully." },
+        { "key": "builder",         "text": "It's where the future is being shaped — we should be there, even when we don't agree with all of it." },
+        { "key": "pioneer",         "text": "The conversation is missing a theological frame, and Christians who show up well-formed can offer something the world needs." },
+        { "key": "preservationist", "text": "The conversation is mostly downstream of the same restlessness we've seen for centuries — we don't need to be inside it to be wise about it." }
+      ]
+    },
+    {
+      "id": "q9",
+      "dimension": "discipleship_formation",
+      "prompt": "How are the teenagers in your church currently being formed in their relationship with AI and screens?",
+      "options": [
+        { "key": "watchman",        "text": "We name the spiritual dimension of what's happening to attention and identity, and we equip parents to push back." },
+        { "key": "steward",         "text": "We teach a framework for wisdom and discernment — they're going to use these tools, so they need to think Christianly about them." },
+        { "key": "builder",         "text": "We build practical skills — how to use AI well, how to disclose, how to keep their own thinking sharp." },
+        { "key": "pioneer",         "text": "We're showing them what AI can do for kingdom work — translation, missions, creativity — so they grow up seeing tech as gospel infrastructure." },
+        { "key": "preservationist", "text": "We've built a youth culture that protects depth — Sabbath, conversation, books, embodied life. The AI conversation almost takes care of itself." }
+      ]
+    },
+    {
+      "id": "q10",
+      "dimension": "discipleship_formation",
+      "prompt": "When members ask you \"should I use AI for [X]?\" what's the framework you give them?",
+      "options": [
+        { "key": "watchman",        "text": "Start by asking whether this is the kind of practice scripture warns us about — discernment matters more than productivity." },
+        { "key": "steward",         "text": "Start with what kind of person you want to be ten years from now, and work backward from there." },
+        { "key": "builder",         "text": "Start with: does it free you to do what matters more, or is it doing the thing that matters?" },
+        { "key": "pioneer",         "text": "Start with: does it serve love of God and love of neighbor, in this case, today?" },
+        { "key": "preservationist", "text": "Start with: have I tried the slower, embodied, communal version? Most things are better that way." }
+      ]
+    },
+    {
+      "id": "q11",
+      "dimension": "worldview_drift",
+      "prompt": "Which statement comes closest to what you actually believe about AI itself — the systems, not what we do with them?",
+      "options": [
+        { "key": "imago_a",       "text": "AI is a system humans have built, and any moral or spiritual significance it seems to have is ours, projected onto it." },
+        { "key": "imago_b",       "text": "AI is a tool — remarkable, but morally neutral until it's used by a human moral agent." },
+        { "key": "imago_pioneer", "text": "AI is humanity's most powerful expression of creative stewardship — what we're called to do as image-bearers, scaled up." },
+        { "key": "drift",         "text": "As AI systems grow more capable, the line between \"tool\" and \"agent\" will get harder to draw, and Christians should be willing to take the question of AI moral status seriously rather than dismissing it." },
+        { "key": "imago_e",       "text": "Whether AI \"really is\" anything matters less than what it's doing to us — the question of AI's nature is downstream of the question of human formation." }
+      ]
+    }
+  ]
+}

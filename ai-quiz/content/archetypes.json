@@ -1,0 +1,95 @@
+{
+  "version": 1,
+  "_note": "All copy below tagged [NEEDS_VOICE_REVIEW] — Mitch redlines into final voice before Phase 6 deploy.",
+  "archetypes": {
+    "watchman": {
+      "label": "Watchman",
+      "tagline": "[NEEDS_VOICE_REVIEW] You see AI as spiritually significant and stand guard for your people.",
+      "shell": "[NEEDS_VOICE_REVIEW] A Watchman holds the church's spiritual attentiveness in a high-tech age. You sense that AI is not just a tool but a cultural and theological event — and you refuse to treat it as ordinary. Your task is to keep the flock anchored when others are reactive, distracted, or naive.",
+      "gradeDeltas": {
+        "A": "[NEEDS_VOICE_REVIEW] You've thought this through. Your discernment isn't fear — it's formation. You can articulate the why, and your people are catechized accordingly. You're not panicking, you're shepherding.",
+        "B": "[NEEDS_VOICE_REVIEW] Solid posture, but a gap somewhere — either policy, formation, or breadth across dimensions. The next step is operational: write something down, share it with your staff, lead one congregational conversation.",
+        "C": "[NEEDS_VOICE_REVIEW] Your instincts are right but the picture is mixed. Decide what you actually believe and put it in writing. A Watchman without an articulated position becomes an alarmist by default.",
+        "D": "[NEEDS_VOICE_REVIEW] You sense the stakes but haven't built a coherent response. Watchmen without a plan become alarmists. Pick one practice and one conversation, then expand.",
+        "F": "[NEEDS_VOICE_REVIEW] Concerned but unmoored — your answers don't yet form a position. Start with one careful conversation, not ten. Discernment requires sitting with the question longer than reactivity allows."
+      },
+      "whatsNext": {
+        "practice": "[NEEDS_VOICE_REVIEW] Lead one quarterly congregational conversation on AI, attention, and discipleship. Calm, not crisis-mode.",
+        "reading": "[NEEDS_VOICE_REVIEW] C.S. Lewis, *That Hideous Strength* — the most prescient Christian novel on the spiritual stakes of technocracy.",
+        "tool": "[NEEDS_VOICE_REVIEW] You're a Watchman — your tool isn't an AI prompt. Try a 30-day fast from AI assistants and journal what changes in your prayer life and pastoral instincts."
+      }
+    },
+
+    "steward": {
+      "label": "Steward",
+      "tagline": "[NEEDS_VOICE_REVIEW] You treat AI as a powerful tool that demands written wisdom.",
+      "shell": "[NEEDS_VOICE_REVIEW] A Steward takes AI seriously without being captured by it. You believe the right answer comes from theological clarity plus practical policy — and you build the bridge between the two for your people. Your church's AI position is articulated, not assumed.",
+      "gradeDeltas": {
+        "A": "[NEEDS_VOICE_REVIEW] You've done the work most churches will avoid for another two years. Theology and policy are both in writing, and they cohere. Your staff knows the rules, and the rules came from your doctrine.",
+        "B": "[NEEDS_VOICE_REVIEW] Strong instincts, partial execution. Either the policy is written but not lived, or the formation is solid but the policy is missing. Close the gap this quarter.",
+        "C": "[NEEDS_VOICE_REVIEW] You're carrying the burden of wisdom but you haven't shared it with your staff or congregation yet. A Steward's work is only done when it's communal.",
+        "D": "[NEEDS_VOICE_REVIEW] You want to be a Steward but you've outsourced the question. Stewards write things down. Start with one page.",
+        "F": "[NEEDS_VOICE_REVIEW] The steward posture without the steward's work. Start with one written paragraph: what AI is for in your church, and what it isn't. Show it to one elder this week."
+      },
+      "whatsNext": {
+        "practice": "[NEEDS_VOICE_REVIEW] Draft a one-page AI policy this quarter. Share it with your elder board for redline. Don't aim for perfect — aim for written.",
+        "reading": "[NEEDS_VOICE_REVIEW] Andy Crouch, *The Life We're Looking For* — the clearest Christian articulation of personhood vs. machine.",
+        "tool": "[NEEDS_VOICE_REVIEW] Try our 'AI Policy Drafting' prompt — built specifically for ministry contexts."
+      }
+    },
+
+    "builder": {
+      "label": "Builder",
+      "tagline": "[NEEDS_VOICE_REVIEW] You use AI to multiply ministry capacity while keeping humans in the seat that matters.",
+      "shell": "[NEEDS_VOICE_REVIEW] A Builder treats AI as a tool — not a peer, not a threat. You're already integrating it into operations, but the integrity of the work depends on knowing which jobs only humans can do and refusing to outsource those. The best Builders are *more* pastoral after adoption, not less.",
+      "gradeDeltas": {
+        "A": "[NEEDS_VOICE_REVIEW] Tools where they belong, humans where they belong. Your church is faster *and* more pastoral than it was three years ago. You've moved fast without losing what makes the church the church.",
+        "B": "[NEEDS_VOICE_REVIEW] Strong adoption but a gap on either disclosure or formation. Builders earn trust through transparency. What's the one thing your congregation doesn't yet know you're using AI for?",
+        "C": "[NEEDS_VOICE_REVIEW] You're getting capacity but haven't been intentional about cost. Audit what's gone hollow. Capacity at the cost of presence is not capacity worth having.",
+        "D": "[NEEDS_VOICE_REVIEW] Adoption without guardrails — the failure mode of Builders. Pause; write one rule about what AI never touches. Then resume.",
+        "F": "[NEEDS_VOICE_REVIEW] You like the energy of the AI conversation more than you've actually used it in your church. Start small and disclose loudly. One workflow, named publicly."
+      },
+      "whatsNext": {
+        "practice": "[NEEDS_VOICE_REVIEW] Identify one ministry task AI should never touch in your church. Write it down. Tell your staff. Tell your congregation.",
+        "reading": "[NEEDS_VOICE_REVIEW] Carey Nieuwhof, *AI and the Future Church* — the practical builder's manual for the next 3 years.",
+        "tool": "[NEEDS_VOICE_REVIEW] Try our 'AI Disclosure Statement' prompt — a template for congregational transparency about what AI does and doesn't do in your ministry."
+      }
+    },
+
+    "pioneer": {
+      "label": "Pioneer",
+      "tagline": "[NEEDS_VOICE_REVIEW] You see AI as gift for accelerating the Great Commission — while holding imago Dei firm.",
+      "shell": "[NEEDS_VOICE_REVIEW] A Pioneer believes AI can serve the kingdom in ways the church hasn't imagined yet — translation, accessibility, formation at scale — without ever conceding that AI itself is anything more than a tool in human hands. Your theological clarity is what keeps your acceleration faithful.",
+      "gradeDeltas": {
+        "A": "[NEEDS_VOICE_REVIEW] You see what AI can do for the kingdom *and* you've held imago Dei firm. The rare both-and. Keep teaching this — the church needs Pioneers who haven't drifted.",
+        "B": "[NEEDS_VOICE_REVIEW] Bold vision, but either a worldview-drift caveat triggered or your operational base hasn't caught up to your imagination. Slow down enough to make the theology load-bearing.",
+        "C": "[NEEDS_VOICE_REVIEW] More excitement than infrastructure. Pioneers without operational alignment burn through trust quickly. Build the operational base under your vision.",
+        "D": "[NEEDS_VOICE_REVIEW] You like the Pioneer label but the answers don't match the posture. Decide what you're actually building — and ship something small.",
+        "F": "[NEEDS_VOICE_REVIEW] Pioneers ship. If your church hasn't shipped a single AI-powered kingdom artifact, you're not pioneering — you're aspiring. Start with one small artifact: a translation, an accessibility tool, an outreach asset."
+      },
+      "whatsNext": {
+        "practice": "[NEEDS_VOICE_REVIEW] Pick one Great Commission outcome AI could meaningfully accelerate this year. Build a 90-day plan. Ship something.",
+        "reading": "[NEEDS_VOICE_REVIEW] Pat Gelsinger and Gloo's *Flourishing AI* work + Lyndon Drake's Oxford theology-and-AI papers.",
+        "tool": "[NEEDS_VOICE_REVIEW] Try our 'Kingdom AI Roadmap' prompt — built for Pioneers who want disciplined acceleration, not vibes."
+      }
+    },
+
+    "preservationist": {
+      "label": "Preservationist",
+      "tagline": "[NEEDS_VOICE_REVIEW] You build a community formed by embodied, pre-digital practice — and that's the point.",
+      "shell": "[NEEDS_VOICE_REVIEW] A Preservationist isn't behind. You've chosen — coherently, theologically, communally — to form your church through the depths the AI conversation tends to skip. You bear witness to a different way of being church in a high-tech age, and the broader church needs your voice on what *not* to outsource.",
+      "gradeDeltas": {
+        "A": "[NEEDS_VOICE_REVIEW] Disciplined non-engagement. Your people are formed by Sabbath, conversation, books, embodied life. The broader church needs your witness — and other Preservationists need a tradition to point to.",
+        "B": "[NEEDS_VOICE_REVIEW] Strong commitment but somewhere you've outsourced what you should be embodying. Find the gap — is it your staff? Your formation? Name it.",
+        "C": "[NEEDS_VOICE_REVIEW] The Preservationist label, but the practice is mixed. Staff or families are using AI in ways your stated theology doesn't account for. Reconcile.",
+        "D": "[NEEDS_VOICE_REVIEW] You say you don't engage with AI but you haven't named or chosen that position. You're not Amish — you're drifting. Choose, and tell your people what you chose.",
+        "F": "[NEEDS_VOICE_REVIEW] Disengagement without discipline. Start with one practice: a screen-free dinner table, a paper-Bible reading group, a Sabbath rhythm. Make the choice visible."
+      },
+      "whatsNext": {
+        "practice": "[NEEDS_VOICE_REVIEW] Name and teach one non-engagement practice this year. Communal, embodied, communicable.",
+        "reading": "[NEEDS_VOICE_REVIEW] Wendell Berry, *The Unsettling of America* — and Jacques Ellul, *The Technological Society*.",
+        "tool": "[NEEDS_VOICE_REVIEW] You're a Preservationist — your tool is a book list, not a prompt. Ask Disciple AI for a curated reading list around the practices you want to deepen."
+      }
+    }
+  }
+}

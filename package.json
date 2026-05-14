@@ -1,0 +1,12 @@
+{
+  "name": "disciple-ai-quiz",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test tests/",
+    "dev": "python3 -m http.server 8080",
+    "lint": "node --check api/submit-quiz.js && node --check ai-quiz/js/*.js"
+  }
+}

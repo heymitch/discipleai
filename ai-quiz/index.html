@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Church Leadership Quiz — Disciple AI</title>
+<meta name="description" content="How prepared is your congregation for AI? Take the 11-question quiz, get your archetype, and join a conversation worth having.">
+<meta property="og:title" content="AI Church Leadership Quiz — Disciple AI">
+<meta property="og:description" content="How prepared is your congregation for AI? Find out where you stand.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../assets/favicon.svg">
+<link rel="stylesheet" href="../colors_and_type.css">
+<link rel="stylesheet" href="quiz.css">
+</head>
+<body>
+<main id="app" data-view="landing">
+  <section id="view-landing" class="view">
+    <div class="container">
+      <p class="eyebrow">A free tool from Disciple AI</p>
+      <h1>How prepared is your congregation for AI?</h1>
+      <p class="lede">11 questions. 5 archetypes. A letter grade you can actually use. No registration to take the quiz &mdash; your results are yours.</p>
+      <button class="btn-p" id="start-btn">Begin</button>
+    </div>
+  </section>
+
+  <section id="view-quiz" class="view" hidden>
+    <div class="container">
+      <header class="quiz-header">
+        <span class="progress" id="progress">1 / 11</span>
+      </header>
+      <article id="question" class="question"></article>
+      <nav class="quiz-nav">
+        <button class="btn-s" id="back-btn" disabled>Back</button>
+        <button class="btn-p" id="next-btn" disabled>Next</button>
+      </nav>
+    </div>
+  </section>
+
+  <section id="view-result" class="view" hidden>
+    <div class="container" id="result-root">
+      <p>(Result page renders here once Phase 3 ships.)</p>
+    </div>
+  </section>
+</main>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
