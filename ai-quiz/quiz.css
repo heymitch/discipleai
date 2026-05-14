@@ -11,22 +11,114 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-body);
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+  margin: 0;
+  /* Subtle linen / cream halftone over the parchment background to add
+     warmth on large screens. Cheap, no extra request. */
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(176, 138, 62, 0.06), transparent 60%),
+    radial-gradient(ellipse 70% 50% at 50% 100%, rgba(110, 32, 25, 0.04), transparent 65%);
+  background-attachment: fixed;
 }
 
-/* ---------- Layout ---------- */
+/* ---------- Site nav (matches /index.html, scoped to dark) ---------- */
 
-main#app {
-  flex: 1;
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(10, 9, 8, 0.92);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border-bottom: 1px solid rgba(244, 236, 221, 0.10);
+}
+.site-nav .inner {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: var(--s-12) var(--gutter) var(--s-16);
+  justify-content: space-between;
+  height: 64px;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+.site-nav .brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+.site-nav .brand img { height: 28px; }
+.site-nav .brand .mk {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--parchment);
+  font-weight: 500;
+  letter-spacing: -.01em;
+}
+.site-nav .brand .ai {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--tobacco-2);
+  letter-spacing: .22em;
+  margin-left: 2px;
+}
+.site-nav .links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+.site-nav a.lk {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--parchment-3);
+  text-decoration: none;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  transition: color var(--dur-2) var(--ease-out);
+}
+.site-nav a.lk:hover { color: var(--parchment); }
+
+/* ---------- Site footer (thin colophon band) ---------- */
+
+.site-foot {
+  background: var(--ink);
+  color: var(--parchment-3);
+  border-top: 1px solid rgba(244, 236, 221, 0.10);
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--tracking-mono);
+  margin-top: var(--s-20);
+}
+.site-foot .inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--s-4);
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: var(--s-6) var(--gutter);
+}
+.site-foot .colophon a {
+  color: var(--parchment-3);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(244, 236, 221, 0.18);
+  padding-bottom: 1px;
+  transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+}
+.site-foot .colophon a:hover { color: var(--gilt-2); border-color: var(--gilt-2); }
+.site-foot .mark em { color: var(--gilt-2); font-style: normal; }
+
+/* ---------- Main / view ---------- */
+
+main#app {
+  padding: clamp(48px, 9vw, 112px) var(--gutter);
+  display: block;
 }
 
-.view { width: 100%; max-width: 720px; }
+.view {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+}
 .view[hidden] { display: none; }
 
 /* ---------- The Card ---------- */
@@ -588,8 +680,15 @@ fieldset.opt-ins {
 
 /* ---------- Mobile ---------- */
 
-@media (max-width: 600px) {
-  main#app { padding: var(--s-6) var(--s-4) var(--s-10); }
+@media (max-width: 720px) {
+  .site-nav .inner { padding: 0 var(--s-5); }
+  .site-foot .inner {
+    padding: var(--s-5);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-2);
+  }
+  main#app { padding: var(--s-10) var(--s-4) var(--s-12); }
   .card { padding: var(--s-8) var(--s-5); }
   .option-btn { grid-template-columns: 28px 1fr 16px; }
   .option-btn .text { font-size: var(--fs-body); }

@@ -12,6 +12,22 @@
 <link rel="stylesheet" href="/ai-quiz/quiz.css">
 </head>
 <body>
+
+<!-- Site nav — matches /index.html so the quiz is a page of the site,
+     not a standalone document. Dark nav over light parchment = editorial masthead. -->
+<nav class="site-nav">
+  <div class="inner">
+    <a class="brand" href="/">
+      <img src="/assets/logo-mark.svg" alt="">
+      <span class="mk">Disciple<span class="ai">AI</span></span>
+    </a>
+    <div class="links">
+      <a class="lk" href="https://DiscipleAI.substack.com" target="_blank" rel="noopener">Archive</a>
+      <a class="lk" href="/">Home</a>
+    </div>
+  </div>
+</nav>
+
 <main id="app" data-view="landing">
 
   <section id="view-landing" class="view view-landing">
@@ -46,6 +62,14 @@
   </section>
 
 </main>
+
+<footer class="site-foot">
+  <div class="inner">
+    <span class="colophon">Disciple AI · Faith meets future · <a href="https://DiscipleAI.substack.com" target="_blank" rel="noopener">DiscipleAI.substack.com</a></span>
+    <span class="mark">№ <em>AI-quiz</em> · v1</span>
+  </div>
+</footer>
+
 <script type="module" src="/ai-quiz/js/main.js"></script>
 </body>
 </html>
